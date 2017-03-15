@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo on A Blog about Data and Statistics</title>
-    <link>http://fengkehh.github.io/tags/hugo/index.xml</link>
-    <description>Recent content in Hugo on A Blog about Data and Statistics</description>
+    <title>Hugo on A Song of Numbers and Graphs</title>
+    <link>/tags/hugo/index.xml</link>
+    <description>Recent content in Hugo on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="http://fengkehh.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Getting Started with Hugo</title>
-      <link>http://fengkehh.github.io/post/hugoisforlovers/</link>
+      <link>/post/hugoisforlovers/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://fengkehh.github.io/post/hugoisforlovers/</guid>
+      <guid>/post/hugoisforlovers/</guid>
       <description>
 
 &lt;h2 id=&#34;step-1-install-hugo&#34;&gt;Step 1. Install Hugo&lt;/h2&gt;
