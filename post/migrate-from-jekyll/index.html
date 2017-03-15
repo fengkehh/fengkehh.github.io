@@ -31,17 +31,17 @@
 <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
-<link rel="stylesheet" href="../../css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" type='text/css' href="../../css/style.css"/>
+<link rel="stylesheet" href="/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="/css/style.css"/>
 <link rel="stylesheet" type='text/css' href="//css/style.css"/>
-<script type="text/javascript" src="../../js/scripts.js"></script>
+<script type="text/javascript" src="/js/scripts.js"></script>
 </head>
 <body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
 	<div class="container container-outer">
 		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
 			<div class="container container-inner clearfix">
 				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
-					<a class="logo__link" href="../../" title="A Song of Numbers and Graphs" rel="home">
+					<a class="logo__link" href="/" title="A Song of Numbers and Graphs" rel="home">
 						<h1 class="logo__title">A Song of Numbers and Graphs</h1>
 						<h2 class="logo__tagline">A Blog about Data and Statistics</h2>
 					</a>
@@ -49,10 +49,10 @@
 			</div>
 			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active"><a class="menu__link" href="../../post/migrate-from-jekyll/">JEKYLL MIGRATION</a></li>
-		<li class="menu__item "><a class="menu__link" href="../../post/goisforlovers/">(HU)GO TEMPLATE PRIMER</a></li>
-		<li class="menu__item "><a class="menu__link" href="../../about/">ABOUT HUGO</a></li>
-		<li class="menu__item "><a class="menu__link" href="../../post/hugoisforlovers/">GETTING STARTED WITH HUGO</a></li>
+		<li class="menu__item menu__item--active"><a class="menu__link" href="/post/migrate-from-jekyll/">JEKYLL MIGRATION</a></li>
+		<li class="menu__item "><a class="menu__link" href="/post/goisforlovers/">(HU)GO TEMPLATE PRIMER</a></li>
+		<li class="menu__item "><a class="menu__link" href="/about/">ABOUT HUGO</a></li>
+		<li class="menu__item "><a class="menu__link" href="/post/hugoisforlovers/">GETTING STARTED WITH HUGO</a></li>
 	</ul>
 </nav>
 		</header>
@@ -92,7 +92,7 @@ With Jekyll, something that looked like</p>
 
 <h2 id="create-your-hugo-configuration-file">Create your Hugo configuration file</h2>
 
-<p>Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the <a href="../../overview/configuration/">Hugo configuration documentation</a> for details.</p>
+<p>Hugo can read your configuration as JSON, YAML or TOML. Hugo supports parameters custom configuration too. Refer to the <a href="/overview/configuration/">Hugo configuration documentation</a> for details.</p>
 
 <h2 id="set-your-configuration-publish-folder-to-site">Set your configuration publish folder to <code>_site</code></h2>
 
@@ -118,13 +118,13 @@ git submodule add -b gh-pages git@github.com:your-username/your-repo.git public
 
 <h2 id="convert-jekyll-templates-to-hugo-templates">Convert Jekyll templates to Hugo templates</h2>
 
-<p>That&rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to <a href="http://jekyllrb.com/docs/templates/">Jekyll&rsquo;s template documentation</a> if you need to refresh your memory on how you built your blog and <a href="../../layout/templates/">Hugo&rsquo;s template</a> to learn Hugo&rsquo;s way.</p>
+<p>That&rsquo;s the bulk of the work right here. The documentation is your friend. You should refer to <a href="http://jekyllrb.com/docs/templates/">Jekyll&rsquo;s template documentation</a> if you need to refresh your memory on how you built your blog and <a href="/layout/templates/">Hugo&rsquo;s template</a> to learn Hugo&rsquo;s way.</p>
 
 <p>As a single reference data point, converting my templates for <a href="http://heyitsalex.net/">heyitsalex.net</a> took me no more than a few hours.</p>
 
 <h2 id="convert-jekyll-plugins-to-hugo-shortcodes">Convert Jekyll plugins to Hugo shortcodes</h2>
 
-<p>Jekyll has <a href="http://jekyllrb.com/docs/plugins/">plugins</a>; Hugo has <a href="../../doc/shortcodes/">shortcodes</a>. It&rsquo;s fairly trivial to do a port.</p>
+<p>Jekyll has <a href="http://jekyllrb.com/docs/plugins/">plugins</a>; Hugo has <a href="/doc/shortcodes/">shortcodes</a>. It&rsquo;s fairly trivial to do a port.</p>
 
 <h3 id="implementation">Implementation</h3>
 
@@ -244,7 +244,7 @@ Liquid::Template.register_tag('image', Jekyll::ImageTag)
 	
 <div class="authorbox clearfix">
 	<figure class="authorbox__avatar">
-		<img alt="Keh-Harng Feng avatar" src="../../img/avatar.png" class="avatar" height="90" width="90">
+		<img alt="Keh-Harng Feng avatar" src="/img/avatar.png" class="avatar" height="90" width="90">
 	</figure>
 	<div class="authorbox__header">
 		<span class="authorbox__name">About Keh-Harng Feng</span>
@@ -256,7 +256,7 @@ Liquid::Template.register_tag('image', Jekyll::ImageTag)
 	
 <nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<div class="post-nav__item post-nav__item--next col-1-2">
-		<a class="post-nav__link" href="../../post/creating-a-new-theme/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Creating a New Theme</p></a>
+		<a class="post-nav__link" href="/post/creating-a-new-theme/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Creating a New Theme</p></a>
 	</div>
 </nav>
 
@@ -298,14 +298,14 @@ Liquid::Template.register_tag('image', Jekyll::ImageTag)
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="../../post/creating-a-new-theme/">Creating a New Theme</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/2016-12-30-hello-markdown/">A Plain Markdown Post</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/2015-01-01-lorem-ipsum/">Lorem Ipsum</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/goisforlovers/">(Hu)go Template Primer</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/hugoisforlovers/">Getting Started with Hugo</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../post/">Posts</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/creating-a-new-theme/">Creating a New Theme</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/migrate-from-jekyll/">Migrate to Hugo from Jekyll</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2016-12-30-hello-markdown/">A Plain Markdown Post</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2015-01-01-lorem-ipsum/">Lorem Ipsum</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/goisforlovers/">(Hu)go Template Primer</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/hugoisforlovers/">Getting Started with Hugo</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/">Posts</a></li>
 		</ul>
 	</div>
 </div>
@@ -314,9 +314,9 @@ Liquid::Template.register_tag('image', Jekyll::ImageTag)
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="../../categories/development">Development</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../categories/golang">Golang</a></li>
-			<li class="widget__item"><a class="widget__link" href="../../categories/r">R</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/development">Development</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/golang">Golang</a></li>
+			<li class="widget__item"><a class="widget__link" href="/categories/r">R</a></li>
 		</ul>
 	</div>
 </div>
@@ -324,15 +324,15 @@ Liquid::Template.register_tag('image', Jekyll::ImageTag)
 <div class="widget-taglist widget">
 	<h4 class="widget__title">Tags</h4>
 	<div class="widget__content">
-		<a class="widget__link widget__link--taglist" href="../../tags/development" title="development">development</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/go" title="go">go</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/golang" title="golang">golang</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/hugo" title="hugo">hugo</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/plot" title="plot">plot</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/r-markdown" title="r-markdown">r-markdown</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/regression" title="regression">regression</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/templates" title="templates">templates</a>
-		<a class="widget__link widget__link--taglist" href="../../tags/themes" title="themes">themes</a>
+		<a class="widget__link widget__link--taglist" href="/tags/development" title="development">development</a>
+		<a class="widget__link widget__link--taglist" href="/tags/go" title="go">go</a>
+		<a class="widget__link widget__link--taglist" href="/tags/golang" title="golang">golang</a>
+		<a class="widget__link widget__link--taglist" href="/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="/tags/plot" title="plot">plot</a>
+		<a class="widget__link widget__link--taglist" href="/tags/r-markdown" title="r-markdown">r-markdown</a>
+		<a class="widget__link widget__link--taglist" href="/tags/regression" title="regression">regression</a>
+		<a class="widget__link widget__link--taglist" href="/tags/templates" title="templates">templates</a>
+		<a class="widget__link widget__link--taglist" href="/tags/themes" title="themes">themes</a>
 	</div>
 </div>
 </aside>
