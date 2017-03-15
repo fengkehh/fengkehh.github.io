@@ -7,12 +7,24 @@
   </url>
   
   <url>
-    <loc>http://fengkehh.github.io/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>http://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://fengkehh.github.io/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://fengkehh.github.io/categories/beginner/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://fengkehh.github.io/tags/blogdown/</loc>
     <lastmod>2017-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -23,32 +35,38 @@
   </url>
   
   <url>
-    <loc>http://fengkehh.github.io/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>http://fengkehh.github.io/tags/github-pages/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://fengkehh.github.io/tags/hugo/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://fengkehh.github.io/post/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://fengkehh.github.io/categories/r/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <loc>http://fengkehh.github.io/categories/programming/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://fengkehh.github.io/tags/r/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://fengkehh.github.io/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://fengkehh.github.io/tags/regression/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

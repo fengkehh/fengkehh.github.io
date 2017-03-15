@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About This Blog</title>
+<title>How This Blog is Made</title>
 <meta name="description" content="Keh-Harng Feng&#39;s Personal blog about Data and Statistics">
 <meta name="generator" content="Hugo 0.19" />
-<meta property="og:title" content="About This Blog" />
-<meta property="og:description" content="Data analysis is really just a fancy name for the art of making connections. Believe it or not, we all use it in our lives. We start collecting data as soon as we are born in the form of personal experience. We then use the data to derive properties about the world we live in. However, sometimes things are not immediately clear. Furthermore, things can seem obvious but actually mean the exact opposite." />
+<meta property="og:title" content="How This Blog is Made" />
+<meta property="og:description" content="How I made this blog" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://fengkehh.github.io/about/" />
+<meta property="og:url" content="http://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/" />
 
 
 
@@ -30,7 +30,7 @@
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
 <link rel="stylesheet" href="http://fengkehh.github.io/css/style.css" type="text/css" media="all" />
-<link rel="stylesheet" type='text/css' href="../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="../../css/style.css" type="text/css" media="all" />
 <link rel="stylesheet" type='text/css' href="css/style.css" type="text/css" media="all" />
 <script type="text/javascript" src="http://fengkehh.github.io/js/scripts.js"></script>
 </head>
@@ -47,7 +47,7 @@
 			</div>
 			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
 	<ul class="menu__list">
-		<li class="menu__item menu__item--active"><a class="menu__link" href="../about/">ABOUT THIS BLOG</a></li>
+		<li class="menu__item "><a class="menu__link" href="../../about/">ABOUT THIS BLOG</a></li>
 	</ul>
 </nav>
 		</header>
@@ -56,40 +56,52 @@
 <div class="main-content content" role="main" itemprop="mainContentOfPage">
 	<article class="post">
 		<header class="post__header clearfix">
-			<h1 class="post__title">About This Blog</h1>
+			<h1 class="post__title">How This Blog is Made</h1>
 			<p class="post__meta meta">
 				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
 				<time class="post__meta-date" datetime="2017-03-15 00:00:00 &#43;0000 UTC">March 15, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="../../categories/programming" rel="category">Programming</a>, <a class="meta-categories__link" href="../../categories/beginner" rel="category">Beginner</a></span>
 			</p>
 		</header>
 		<div class="post__content clearfix">
-			<p>Data analysis is really just a fancy name for the art of making connections.
-Believe it or not, we all use it in our lives. We start collecting data as soon
-as we are born in the form of personal experience. We then use the data to derive
-properties about the world we live in. However, sometimes things are not immediately
-clear. Furthermore, things can seem obvious but actually mean the exact opposite.
-That is why scientists have developed very rigorous methods and standards
-when it comes to data analysis. This blog aims to talk about some aspects of
-data analysis as I work with real data and hopefully you can find them useful
-one day.</p>
+			<!-- BLOGDOWN-HEAD -->
+<!-- /BLOGDOWN-HEAD -->
 
-<p>I started this blog in early 2017 after I got my Master&rsquo;s degree in physics and
-all of a sudden found myself a bit lost on what to do next. Having spent most of
-my life in school my academic experience is plenty but my professional experience
-is certainly lacking. I decided that this blog will serve as a platform for me to</p>
-
-<ol>
-<li>Practice and improve my skills by working with real data.</li>
-<li>Highlight interesting subtleties.</li>
-<li>Showcase my abilities to potential employers ;).</li>
+<!-- BLOGDOWN-BODY-BEFORE -->
+<!-- /BLOGDOWN-BODY-BEFORE -->
+<p>This blog is made of one philosophy and four pillars: it should cost exactly nothing and all the software you need are the following.</p>
+<ol style="list-style-type: decimal">
+<li><p>The R programming language for data analysis.</p></li>
+<li><p>The R Markdown language for content generation and typesetting.</p></li>
+<li><p>Blogdown in conjunction with Hugo to generate the web pages.</p></li>
+<li><p>Github-Pages for webhosting.</p></li>
 </ol>
-
-<p>I hope you find my blog interesting. If you believe you have spotted something
-due for a second look please feel free to join the fray using Disqus. Thanks for
-reading!</p>
+<p>This post will mainly briefly touch on 1 and 2 then focus on 3 and 4 so you can get your own blog up and running if you want to follow in my footsteps.</p>
+<div id="the-r-programming-language" class="section level2">
+<h2>The R Programming Language</h2>
+<p>R is a programming language designed for statistics. It has very powerful data manipulation and 2d plotting capabilities. However to use it to its full potential you need to let go of graphical user interfaces and start writing R scripts. If you have always relied on GUI before, you should know that having to code everything is a good thing! Imagine having to explain to someone which buttons to click to get to the same result you have. If you did everything in R all you need to do is just showing them the code.</p>
+<p>To get R up and running on your computer, download and install the R distribution for your operating system from the <a href="https://cran.r-project.org/">official website</a></p>
+</div>
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>The most important part of this is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even <span class="math inline">\(\LaTeX\)</span> expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking varius display or formatting parameters.</p>
+<p>I use the popular <a href="https://www.rstudio.com/products/rstudio/#Desktop">R Studio</a> to write R Markdown files. Be sure to install R first if you haven’t done so already.</p>
+</div>
 
 		</div>
 		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="../../tags/r/" rel="tag">R</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/r-markdown/" rel="tag">R Markdown</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/hugo/" rel="tag">Hugo</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/blogdown/" rel="tag">Blogdown</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/github-pages/" rel="tag">Github Pages</a></li>
+	</ul>
+</div>
 
 	</article>
 	
@@ -111,9 +123,9 @@ reading!</p>
 	<div id="disqus_thread"></div>
 <script type="text/javascript">
     var disqus_shortname = 'datakhf';
-    var disqus_identifier = 'http:\/\/fengkehh.github.io\/about\/';
-    var disqus_title = 'About This Blog';
-    var disqus_url = 'http:\/\/fengkehh.github.io\/about\/';
+    var disqus_identifier = 'http:\/\/fengkehh.github.io\/post\/2017-03-15-how-this-blog-is-made\/';
+    var disqus_title = 'How This Blog is Made';
+    var disqus_url = 'http:\/\/fengkehh.github.io\/post\/2017-03-15-how-this-blog-is-made\/';
 
     (function() {
         var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -144,8 +156,8 @@ reading!</p>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
-			<li class="widget__item"><a class="widget__link" href="../post/2017-03-15-how-this-blog-is-made/">How This Blog is Made</a></li>
-			<li class="widget__item"><a class="widget__link" href="../post/">Posts</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-15-how-this-blog-is-made/">How This Blog is Made</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/">Posts</a></li>
 		</ul>
 	</div>
 </div>

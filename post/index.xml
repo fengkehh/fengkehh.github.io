@@ -6,53 +6,37 @@
     <description>Recent content in Posts on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jul 2015 21:13:14 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://fengkehh.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Hello R Markdown</title>
-      <link>http://fengkehh.github.io/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
+      <title>How This Blog is Made</title>
+      <link>http://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://fengkehh.github.io/post/2015-07-23-r-rmarkdown/</guid>
-      <description>&lt;div id=&#34;r-markdown&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;R Markdown&lt;/h1&gt;
-&lt;p&gt;This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see &lt;a href=&#34;http://rmarkdown.rstudio.com&#34; class=&#34;uri&#34;&gt;http://rmarkdown.rstudio.com&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;You can embed an R code chunk like this:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;summary(cars)
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-fit &amp;lt;- lm(dist ~ speed, data = cars)
-fit
-## 
-## Call:
-## lm(formula = dist ~ speed, data = cars)
-## 
-## Coefficients:
-## (Intercept)        speed  
-##     -17.579        3.932&lt;/code&gt;&lt;/pre&gt;
+      <guid>http://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</guid>
+      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
+&lt;!-- /BLOGDOWN-HEAD --&gt;
+
+&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
+&lt;p&gt;This blog is made of one philosophy and four pillars: it should cost exactly nothing and all the software you need are the following.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;The R programming language for data analysis.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;The R Markdown language for content generation and typesetting.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Blogdown in conjunction with Hugo to generate the web pages.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Github-Pages for webhosting.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This post will mainly briefly touch on 1 and 2 then focus on 3 and 4 so you can get your own blog up and running if you want to follow in my footsteps.&lt;/p&gt;
+&lt;div id=&#34;the-r-programming-language&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;The R Programming Language&lt;/h2&gt;
+&lt;p&gt;R is a programming language designed for statistics. It has very powerful data manipulation and 2d plotting capabilities. However to use it to its full potential you need to let go of graphical user interfaces and start writing R scripts. If you have always relied on GUI before, you should know that having to code everything is a good thing! Imagine having to explain to someone which buttons to click to get to the same result you have. If you did everything in R all you need to do is just showing them the code.&lt;/p&gt;
+&lt;p&gt;To get R up and running on your computer, download and install the R distribution for your operating system from the &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;official website&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-&lt;div id=&#34;including-plots&#34; class=&#34;section level1&#34;&gt;
-&lt;h1&gt;Including Plots&lt;/h1&gt;
-&lt;p&gt;You can also embed plots. See Figure &lt;a href=&#34;#fig:pie&#34;&gt;1&lt;/a&gt; for example:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;par(mar = c(0, 1, 0, 1))
-pie(
-  c(280, 60, 20),
-  c(&amp;#39;Sky&amp;#39;, &amp;#39;Sunny side of pyramid&amp;#39;, &amp;#39;Shady side of pyramid&amp;#39;),
-  col = c(&amp;#39;#0292D8&amp;#39;, &amp;#39;#F7EA39&amp;#39;, &amp;#39;#C4B632&amp;#39;),
-  init.angle = -50, border = NA
-)&lt;/code&gt;&lt;/pre&gt;
-&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:pie&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;../post/2015-07-23-r-rmarkdown_files/figure-html/pie-1.png&#34; alt=&#34;A fancy pie chart.&#34; width=&#34;672&#34; /&gt;
-&lt;p class=&#34;caption&#34;&gt;
-Figure 1: A fancy pie chart.
-&lt;/p&gt;
-&lt;/div&gt;
+&lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R Markdown&lt;/h2&gt;
+&lt;p&gt;The most important part of this is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking varius display or formatting parameters.&lt;/p&gt;
+&lt;p&gt;I use the popular &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;R Studio&lt;/a&gt; to write R Markdown files. Be sure to install R first if you haven’t done so already.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
