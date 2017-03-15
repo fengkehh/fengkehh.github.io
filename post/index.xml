@@ -35,7 +35,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;R Markdown&lt;/h2&gt;
-&lt;p&gt;The most important motivation to go this route is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking varius display or formatting parameters.&lt;/p&gt;
+&lt;p&gt;The most important motivation to go this route is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking various display or formatting parameters.&lt;/p&gt;
 &lt;p&gt;I use the popular &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;R Studio&lt;/a&gt; to write R Markdown files. Be sure to install R first if you haven’t done so already.&lt;/p&gt;
 &lt;p&gt;Once you have R Studio installed go ahead and launch it. Type the following lines in the console to install all the packages you need for R Markdown:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;#39;rmarkdown&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
