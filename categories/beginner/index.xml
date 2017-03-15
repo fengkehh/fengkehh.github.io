@@ -19,7 +19,7 @@
 
 &lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
 &lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
-&lt;p&gt;This blog is made of one philosophy and four pillars: it should cost exactly nothing and all the software you need are the following.&lt;/p&gt;
+&lt;p&gt;This blog is made of one philosophy resting on four pillars: it should cost exactly nothing and all the software you need are the following.&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;&lt;p&gt;The R programming language for data analysis.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;The R Markdown language for content generation and typesetting.&lt;/p&gt;&lt;/li&gt;
