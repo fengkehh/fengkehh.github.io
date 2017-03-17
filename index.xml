@@ -117,9 +117,9 @@ cat id_rsa.pub&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;-If you want a preview of your site, type &lt;code&gt;serve_site()&lt;/code&gt; in RStudio to start a local server with a copy of your website on display.&lt;/p&gt;
 &lt;p&gt;-If you are satisfied, you can build the site for online webhost using the &lt;code&gt;build_site()&lt;/code&gt; command in RStudio. Once that is done, you can use git to push the web pages inside your &lt;code&gt;public/&lt;/code&gt; folder into the Github Pages repository to deploy it online. I have modified &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt;’s shell script into a R script to streamline deployment:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Customized R function to facilitate fast site deployment
-require(blogdown)&lt;/code&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;code&gt;## Loading required package: blogdown&lt;/code&gt;&lt;/pre&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;deploy &amp;lt;- function() {
+require(blogdown)
+
+deploy &amp;lt;- function() {
     
     # Make sure things are commited
     output &amp;lt;- system(&amp;#39;git status -s&amp;#39;, intern = TRUE)
