@@ -6,8 +6,141 @@
     <description>Recent content on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 16 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://fengkehh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How This Blog is Made Part II</title>
+      <link>http://fengkehh.github.io/post/2017-03-16-how-this-blog-is-made-part-ii/</link>
+      <pubDate>Thu, 16 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://fengkehh.github.io/post/2017-03-16-how-this-blog-is-made-part-ii/</guid>
+      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
+&lt;!-- /BLOGDOWN-HEAD --&gt;
+
+&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
+&lt;p&gt;This is the continuation of [Part I]. In this section I am going to cover setting up &lt;code&gt;Blogdown&lt;/code&gt;, &lt;code&gt;Hugo&lt;/code&gt; and &lt;code&gt;Github Pages&lt;/code&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/#page-templates-and-fixing-blank-pages&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
+&lt;p&gt;I am going to assume you are using Microsoft Windows because that is what I use. The process should be largely the same for Linux and Mac OSX but you may need to install extra softwares such as &lt;code&gt;Homebrew&lt;/code&gt;.&lt;/p&gt;
+&lt;div id=&#34;blogdown-and-hugo&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Blogdown and Hugo&lt;/h2&gt;
+&lt;p&gt;Hugo is a static website delivery system. It is very easy to create a website with consistent theme and styling using Hugo. The only problem for us is that Hugo does NOT inherently support R Markdown. This is why we need Blogdown, the brainchild of Yihui Xie (aka Emperor of R Markdown, First of His Name), to bridge the water.&lt;/p&gt;
+&lt;div id=&#34;setup&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Setup&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Launch RStudio. Type the following command to install Blogdown and load it into R.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;devtools::install_github(&amp;quot;rstudio/blogdown&amp;quot;)
+library(blogdown)&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Install Hugo using the following command:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install_hugo()&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Right now we can actually start generating a new site. However it is a good time to go set up our webhost first.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;github-pages&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Github (Pages)&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt; is an online repository site utilizing the Git technology. Normally Github is used for version control in software development. However it has a lesser known functionality called Github Pages which is essentially free webhosting for static websites.&lt;/p&gt;
+&lt;p&gt;Here’s a bit of tangent here on how Github works. Skip straight to setup if you are not interseted. On Github you have repositories. Think of them like document folders for different projects. Your Github account is essentially an online desk where you keep all of these folders/repositories inside and the underlying &lt;em&gt;git&lt;/em&gt; version control software is like the secretary. When you want to take a look at a particular project, you tell &lt;strong&gt;git&lt;/strong&gt; to give you a copy/&lt;strong&gt;clone&lt;/strong&gt; of the repository containing that project to keep on your own desk. This then becomes your local repository.&lt;/p&gt;
+&lt;p&gt;You might then make some changes and add different things to the local repository. As you make changes you can make snapshots of your progress by telling git to &lt;strong&gt;commit&lt;/strong&gt; changes so you can revert to this point if you mess up later. Kind of like creating save files when you are playing a video game. Note that up to now all of your changes only happen in your local repository. Once you are really done for the night you can tell git to &lt;strong&gt;push&lt;/strong&gt; the changes to Github and git will make all the changes to the online repository to match your local repository.&lt;/p&gt;
+&lt;p&gt;Github Pages is basically a special repository for you. Github will render html files inside this repository as webpages if someone types out the correponding url in a web browser. This means you can use this repository as a personal webhost and maintain it using git. That is what we are trying to achieve.&lt;/p&gt;
+&lt;div id=&#34;setup-1&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Setup&lt;/h3&gt;
+&lt;p&gt;We are going to set everything up for a technique called &lt;em&gt;submodule&lt;/em&gt;. I will explain the reason later. In the mean time you should follow the steps below &lt;strong&gt;EXACTLY&lt;/strong&gt;. If you see an item like &lt;em&gt;&amp;lt; something &amp;gt;&lt;/em&gt;, that means replace it with whatever &lt;em&gt;something&lt;/em&gt; indicates (ie: your username, directory name etc etc) minus the angle brackets.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Download and install &lt;a href=&#34;https://git-scm.com/downloads&#34;&gt;Git&lt;/a&gt; and &lt;a href=&#34;https://www.r-bloggers.com/rstudio-and-github/&#34;&gt;configure&lt;/a&gt; it for RStudio.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Sign up for a (free) account on &lt;a href=&#34;https://github.com&#34;&gt;Github&lt;/a&gt;. Choose a reasonable username because that will be part of the URL pointing to your site. Be warned: if your account is free all of your website content will be visible to the public through your Github repository. If you want to limit access to your content, consider upgrading to a paid account or seek hosting solution elsewhere.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;We are going to create the Github Pages repository first. Click on New Repository. Select “Initialize this repository with a README” so your repository comes with a README.md file. Name this repository &lt;em&gt;&lt;github username&gt;.github.io&lt;/em&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Now we will create the source repository. Click on New Repository. This time make sure you &lt;strong&gt;deselect&lt;/strong&gt; “Initialize this repository with a README” so when your repository is created it is empty. The name is not important but since this repository is going to be used for the source files of the website I suggest you name it accordingly. For example, I named mine &lt;em&gt;blog-source&lt;/em&gt;. Once the repository is created you should see a URL to this repository under Quick Setup in the form of &lt;code&gt;https://github.com/&amp;lt;github username&amp;gt;/&amp;lt;source repository name&amp;gt;.git&lt;/code&gt; Copy this into clipboard.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Launch RStudio. Click File -&amp;gt; New Project… and select Version Control -&amp;gt; Git. Paste the URL for your &lt;strong&gt;source repository&lt;/strong&gt; under Repository URL. Choose a location to create your local repository under and click Create Project. RStudio will automatically switch to your local respository afterwards.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We are now ready to generate our new site and configure it to use Github Pages as the webhost.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;site-creation-submodule&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Site Creation &amp;amp; Submodule&lt;/h2&gt;
+&lt;p&gt;The reason we are using two repositories is because Hugo generates the website into a subdirectory called &lt;code&gt;public&lt;/code&gt;. Unfortunately, Github Pages for personal websites only serves homepage from the root of its master branch. To work around this we are going to link our &lt;code&gt;public&lt;/code&gt; directory in the local repository to our Github Pages repository while the root directory of our local repository remains linked to the source repository. Thus, if we commit then push changes in the root of our local repository, all the changes will go to the source repository. If we commit and push changes in the public subdirectory though, they will instead go into the Github Pages repo. As I have foreshadowed, this is realized using &lt;em&gt;submodule&lt;/em&gt;.&lt;/p&gt;
+&lt;div id=&#34;setup-2&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Setup&lt;/h3&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;In RStudio, open the project we just created if it’s not open already and make sure Blogdown is loaded using &lt;code&gt;library(&#39;blogdown&#39;)&lt;/code&gt;. Type &lt;code&gt;new_site()&lt;/code&gt; to create a blank site with the default theme. The homepage will show up in viewer. Click the red stop button to quit the viewer and go back to console. On the top left there are three tabs: &lt;code&gt;Environment&lt;/code&gt;, &lt;code&gt;History&lt;/code&gt; and &lt;code&gt;Git&lt;/code&gt;. Click on &lt;code&gt;Git&lt;/code&gt;. Click on the gear icon and select Shell… to launch Git Bash terminal.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In the terminal, you should be in the directory for your local source repository. There should be a subdirectory called &lt;code&gt;public&lt;/code&gt;. Delete it with the command &lt;code&gt;rm -rf public&lt;/code&gt;.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;In the terminal, type the following command to clone your Github Pages repository into a subdirectory called &lt;code&gt;public&lt;/code&gt; using &lt;em&gt;submodule&lt;/em&gt;. Remember to replace with your own username.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;git submodule add -b master git@github.com:&amp;lt;username&amp;gt;/&amp;lt;username&amp;gt;.github.io.git public&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can double check if this step is successful by typing &lt;code&gt;git remote show origin&lt;/code&gt; in the terminal. Under the root directory of your local source repository, the origin should point to your online Github source repository. However, running the same command in the public/ subdirectory should tell you that the origin is pointing to the your online Github Pages repository.&lt;/p&gt;
+&lt;ol start=&#34;4&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;In RStudio, you should see a file called .gitignore in RStudio’s file browser. Click on it to edit it. Add a new line &lt;code&gt;public/&lt;/code&gt; at the bottom. Save the file.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div id=&#34;git-submodule-complaining-about-keys&#34; class=&#34;section level4&#34;&gt;
+&lt;h4&gt;Git Submodule Complaining about Keys!?&lt;/h4&gt;
+&lt;p&gt;If you run into this problem it is most likely a problem with your ssh keys. The easiest solution is probably generating a new ssh key on the computer you are using and adding it to Github.&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Type each of the following commands in the terminal.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;ssh-keygen
+
+cd ~/.ssh
+
+cat id_rsa.pub&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You should see a block of text that begins with &lt;code&gt;ssh-rsa&lt;/code&gt; on your screen. Copy everything in this block of text into clipboard.&lt;/p&gt;
+&lt;ol start=&#34;2&#34; style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;Go to Github. Click on your profile on the top right and select &lt;code&gt;Settings&lt;/code&gt;. Click on &lt;code&gt;SSH and GPG Keys&lt;/code&gt; on the left and press the green &lt;code&gt;New SSH key&lt;/code&gt; button. Type a name for the title and paste the block of text you got from the last step into the &lt;code&gt;Key&lt;/code&gt; textfield. Add the key.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Run the git submodule command again.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;site-configuration-and-deployment&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Site Configuration and Deployment&lt;/h2&gt;
+&lt;p&gt;We are now ready to configure our site and deploy it for the first time.&lt;/p&gt;
+&lt;p&gt;-The default theme is a bit barebones so you might want to install a new theme using the following command in RStudio with blogdown loaded:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install_theme(&amp;#39;&amp;lt;creator github name&amp;gt;/&amp;lt;theme name&amp;gt;&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For example, this blog site uses the &lt;a href=&#34;https://github.com/Vimux/Mainroad&#34;&gt;Mainroad&lt;/a&gt; theme. So I typed &lt;code&gt;install_theme(&#39;Vimux/Mainroad&#39;)&lt;/code&gt; to install it. Notice that there is no leading or trailing &lt;code&gt;/&lt;/code&gt;. After installation, open &lt;code&gt;config.toml&lt;/code&gt; in your root folder and double check that the variable &lt;code&gt;theme&lt;/code&gt; has been set to your theme of choice.&lt;/p&gt;
+&lt;p&gt;-To use &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions you must enable the &lt;code&gt;mathjax&lt;/code&gt; javascript. I adopted YiHui Xie’s &lt;a href=&#34;https://github.com/yihui/hugo-lithium-theme/blob/7d436d803df90c873cdaecf24aeeff827696d77c/layouts/partials/footer.html#L21-L30&#34;&gt;approach&lt;/a&gt;. Copy the highlighted code chunk and insert it into a layout specification that you are sure to be loaded on every page by your theme. For example, I inserted it into the footer.html file located under &lt;code&gt;themes/&amp;lt;theme name&amp;gt;/layouts/partials/&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;-There are other self-explanatory settings in &lt;code&gt;config.toml&lt;/code&gt; that you should change. For example, title, baseurl, author name and descriptions, etc.&lt;/p&gt;
+&lt;p&gt;-If you want a preview of your site, type &lt;code&gt;serve_site()&lt;/code&gt; in RStudio to start a local server with a copy of your website on display.&lt;/p&gt;
+&lt;p&gt;-If you are satisfied, you can build the site for online webhost using the &lt;code&gt;build_site()&lt;/code&gt; command in RStudio. Once that is done, you can use git to push the web pages inside your &lt;code&gt;public/&lt;/code&gt; folder into the Github Pages repository to deploy it online. I have modified &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt;’s shell script into a R script to streamline deployment:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;## Customized R function to facilitate fast site deployment
+require(blogdown)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Loading required package: blogdown&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;deploy &amp;lt;- function() {
+    
+    # Make sure things are commited
+    output &amp;lt;- system(&amp;#39;git status -s&amp;#39;, intern = TRUE)
+    
+    if (length(output)) {
+        print(&amp;#39;Dirty work directory. Commit/revert changed files first.&amp;#39;)
+    } else {
+        # Remove old website
+        unlink(list.files(path = &amp;#39;./public&amp;#39;, full.names = TRUE), recursive = TRUE)
+        
+        # Build website from source
+        build_site()
+        
+        # Push site
+        message &amp;lt;- paste(&amp;#39;Site rebuild&amp;#39;, as.character(Sys.time()))
+        setwd(&amp;#39;./public&amp;#39;)
+        
+        fileConn&amp;lt;-file(&amp;quot;deploy.sh&amp;quot;)
+        writeLines(c(&amp;#39;git add -A&amp;#39;,
+                     paste(&amp;#39;git commit -m&amp;#39;, &amp;#39; \&amp;quot;&amp;#39;, message, &amp;#39;\&amp;quot;&amp;#39;, sep = &amp;#39;&amp;#39;), 
+                     &amp;#39;git push&amp;#39;), 
+                   fileConn)
+        close(fileConn)
+        
+        setwd(&amp;#39;..&amp;#39;)
+        print(message)
+        print(&amp;#39;Go to ./public and execute ./deploy.sh&amp;#39;)
+        
+    }
+    
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once you copy the above code into an empty .R script file, save it as deploy.R and use &lt;code&gt;source(&#39;deploy.R&#39;)&lt;/code&gt; to load the script into memory. Whenever you want to deploy your site, first commit your changes to the local source repository (ie: by RStudio Git GUI or command line), then type &lt;code&gt;deploy()&lt;/code&gt; in RStudio to build the site. Once that is done, go to the terminal and type &lt;code&gt;cd public&lt;/code&gt; to go to the Github Pages local repository. Type &lt;code&gt;./deploy.sh&lt;/code&gt; to complete deployment.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>About This Blog</title>
@@ -69,10 +202,10 @@ reading!&lt;/p&gt;
 &lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;R Markdown&lt;/h2&gt;
 &lt;p&gt;Perhaps the most important reason to create a blog site this way is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking various display or formatting parameters.&lt;/p&gt;
-&lt;p&gt;I use the popular &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;R Studio&lt;/a&gt; to write R Markdown files. Be sure to install R first if you haven’t done so already.&lt;/p&gt;
-&lt;p&gt;Once you have R Studio installed go ahead and launch it. Type the following lines in the console to install all the packages you need for R Markdown:&lt;/p&gt;
+&lt;p&gt;I use the popular &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;RStudio&lt;/a&gt; to write R Markdown files. Be sure to install R first if you haven’t done so already.&lt;/p&gt;
+&lt;p&gt;Once you have RStudio installed go ahead and launch it. Type the following lines in the console to install all the packages you need for R Markdown:&lt;/p&gt;
 &lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;#39;rmarkdown&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I won’t go into how to use R Studio or write R Markdown files here because there are many excellent &lt;a href=&#34;https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/&#34;&gt;tutorials&lt;/a&gt; on the subject already. The reason I bring them up is because there are nice tools out there that helps us convert content generated by R Markdown to content readable on a blog like this one. Part II will talk about how to set up free webhosting using Github-Pages and configure Blogdown and Hugo to generate the static webpages for the blog site.&lt;/p&gt;
+&lt;p&gt;I won’t go into how to use RStudio or write R Markdown files here because there are many excellent &lt;a href=&#34;https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/&#34;&gt;tutorials&lt;/a&gt; on the subject already. The reason I bring them up is because there are nice tools out there that help us convert content generated by R Markdown to content readable on a blog like this one. Part II will talk about how to set up free webhosting using Github-Pages and configure Blogdown and Hugo to generate the static webpages for the blog site.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
