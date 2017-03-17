@@ -19,6 +19,20 @@
 &lt;!-- /BLOGDOWN-HEAD --&gt;
 
 &lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#blogdown-and-hugo&#34;&gt;Blogdown and Hugo&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setup&#34;&gt;Setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-pages&#34;&gt;Github (Pages)&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-1&#34;&gt;Setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#site-creation-submodule&#34;&gt;Site Creation &amp;amp; Submodule&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#setup-2&#34;&gt;Setup&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#site-configuration-and-deployment&#34;&gt;Site Configuration and Deployment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
 &lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
 &lt;p&gt;This is the continuation of [Part I]. In this section I am going to cover setting up &lt;code&gt;Blogdown&lt;/code&gt;, &lt;code&gt;Hugo&lt;/code&gt; and &lt;code&gt;Github Pages&lt;/code&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/#page-templates-and-fixing-blank-pages&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
 &lt;p&gt;I am going to assume you are using Microsoft Windows because that is what I use. The process should be largely the same for Linux and Mac OSX but you may need to install extra softwares such as &lt;code&gt;Homebrew&lt;/code&gt;.&lt;/p&gt;
