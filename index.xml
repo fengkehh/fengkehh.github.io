@@ -6,8 +6,41 @@
     <description>Recent content on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fengkehh.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About This Blog</title>
+      <link>https://fengkehh.github.io/about/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fengkehh.github.io/about/</guid>
+      <description>&lt;p&gt;Data analysis is really just a fancy name for the art of making connections.
+Believe it or not, we all use it in our lives. We start collecting data as soon
+as we are born in the form of personal experience. We then use the data to derive
+properties about the world we live in. However, sometimes things are not immediately
+clear. Furthermore, things can seem obvious but actually mean the exact opposite.
+That is why scientists have developed very rigorous methods and standards
+when it comes to data analysis. This blog aims to talk about some aspects of
+data analysis as I work with real data and hopefully you can find them useful
+one day.&lt;/p&gt;
+
+&lt;p&gt;I started this blog in early 2017 after I got my Master&amp;rsquo;s degree in physics and
+all of a sudden found myself a bit lost on what to do next. Having spent most of
+my life in school my academic experience is plenty but my professional experience
+is certainly lacking. I decided that this blog will serve as a platform for me to&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Practice and improve my skills by working with real data.&lt;/li&gt;
+&lt;li&gt;Highlight interesting subtleties.&lt;/li&gt;
+&lt;li&gt;Showcase my abilities to potential employers ;).&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I hope you find my blog interesting. If you believe you have spotted something
+due for a second look please feel free to join the fray using Disqus. Thanks for
+reading!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>How This Blog is Made Part II</title>
@@ -34,7 +67,7 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
-&lt;p&gt;This is the continuation of Part I. In this section I am going to cover setting up &lt;em&gt;Blogdown&lt;/em&gt;, &lt;em&gt;Hugo&lt;/em&gt; and &lt;em&gt;Github Pages&lt;/em&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
+&lt;p&gt;This is the continuation of &lt;a href=&#34;post/2017-03-15-how-this-blog-is-made/&#34;&gt;Part I&lt;/a&gt;. In this section I am going to cover setting up &lt;em&gt;Blogdown&lt;/em&gt;, &lt;em&gt;Hugo&lt;/em&gt; and &lt;em&gt;Github Pages&lt;/em&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
 &lt;p&gt;I am going to assume you are using Microsoft Windows because that is what I use. The process should be largely the same for Linux and Mac OSX but you may need to install extra softwares such as &lt;em&gt;Homebrew&lt;/em&gt;.&lt;/p&gt;
 &lt;div id=&#34;blogdown-and-hugo&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Blogdown and Hugo&lt;/h2&gt;
@@ -158,39 +191,6 @@ deploy &amp;lt;- function() {
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Once you copy the above code into an empty .R script file, save it as deploy.R and use &lt;code&gt;source(&#39;deploy.R&#39;)&lt;/code&gt; to load the script into memory. Whenever you want to deploy your site, first commit your changes to the local source repository (ie: by RStudio Git GUI or command line), then type &lt;code&gt;deploy()&lt;/code&gt; in RStudio to build the site. Once that is done, go to the terminal and type &lt;code&gt;cd public&lt;/code&gt; to go to the Github Pages local repository. Type &lt;code&gt;./deploy.sh&lt;/code&gt; to complete deployment.&lt;/p&gt;
 &lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About This Blog</title>
-      <link>https://fengkehh.github.io/about/</link>
-      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://fengkehh.github.io/about/</guid>
-      <description>&lt;p&gt;Data analysis is really just a fancy name for the art of making connections.
-Believe it or not, we all use it in our lives. We start collecting data as soon
-as we are born in the form of personal experience. We then use the data to derive
-properties about the world we live in. However, sometimes things are not immediately
-clear. Furthermore, things can seem obvious but actually mean the exact opposite.
-That is why scientists have developed very rigorous methods and standards
-when it comes to data analysis. This blog aims to talk about some aspects of
-data analysis as I work with real data and hopefully you can find them useful
-one day.&lt;/p&gt;
-
-&lt;p&gt;I started this blog in early 2017 after I got my Master&amp;rsquo;s degree in physics and
-all of a sudden found myself a bit lost on what to do next. Having spent most of
-my life in school my academic experience is plenty but my professional experience
-is certainly lacking. I decided that this blog will serve as a platform for me to&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Practice and improve my skills by working with real data.&lt;/li&gt;
-&lt;li&gt;Highlight interesting subtleties.&lt;/li&gt;
-&lt;li&gt;Showcase my abilities to potential employers ;).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;I hope you find my blog interesting. If you believe you have spotted something
-due for a second look please feel free to join the fray using Disqus. Thanks for
-reading!&lt;/p&gt;
 </description>
     </item>
     

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Programming on A Song of Numbers and Graphs</title>
-    <link>https://fengkehh.github.io/categories/programming/index.xml</link>
-    <description>Recent content in Programming on A Song of Numbers and Graphs</description>
+    <title>Projects on A Song of Numbers and Graphs</title>
+    <link>https://fengkehh.github.io/categories/projects/index.xml</link>
+    <description>Recent content in Projects on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="https://fengkehh.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://fengkehh.github.io/categories/projects/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How This Blog is Made Part II</title>
@@ -33,7 +33,7 @@
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
-&lt;p&gt;This is the continuation of Part I. In this section I am going to cover setting up &lt;em&gt;Blogdown&lt;/em&gt;, &lt;em&gt;Hugo&lt;/em&gt; and &lt;em&gt;Github Pages&lt;/em&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
+&lt;p&gt;This is the continuation of &lt;a href=&#34;post/2017-03-15-how-this-blog-is-made/&#34;&gt;Part I&lt;/a&gt;. In this section I am going to cover setting up &lt;em&gt;Blogdown&lt;/em&gt;, &lt;em&gt;Hugo&lt;/em&gt; and &lt;em&gt;Github Pages&lt;/em&gt; to start blogging. This is essentially a mix of the excellent guides by &lt;a href=&#34;https://proquestionasker.github.io/blog/Making_Site/&#34;&gt;Amber Thomas&lt;/a&gt;, &lt;a href=&#34;https://hjdskes.github.io/blog/update-deploying-hugo-on-personal-gh-pages/&#34;&gt;Jente Hidske&lt;/a&gt; and &lt;a href=&#34;http://robertmyles.github.io/2017/02/01/how-to-make-a-github-pages-blog-with-rstudio-and-hugo/&#34;&gt;Robert McDonnell&lt;/a&gt;. However if you want a one stop solution with some of my personal twists, here it is!&lt;/p&gt;
 &lt;p&gt;I am going to assume you are using Microsoft Windows because that is what I use. The process should be largely the same for Linux and Mac OSX but you may need to install extra softwares such as &lt;em&gt;Homebrew&lt;/em&gt;.&lt;/p&gt;
 &lt;div id=&#34;blogdown-and-hugo&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Blogdown and Hugo&lt;/h2&gt;
@@ -156,41 +156,6 @@ deploy &amp;lt;- function() {
     
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Once you copy the above code into an empty .R script file, save it as deploy.R and use &lt;code&gt;source(&#39;deploy.R&#39;)&lt;/code&gt; to load the script into memory. Whenever you want to deploy your site, first commit your changes to the local source repository (ie: by RStudio Git GUI or command line), then type &lt;code&gt;deploy()&lt;/code&gt; in RStudio to build the site. Once that is done, go to the terminal and type &lt;code&gt;cd public&lt;/code&gt; to go to the Github Pages local repository. Type &lt;code&gt;./deploy.sh&lt;/code&gt; to complete deployment.&lt;/p&gt;
-&lt;/div&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>How This Blog is Made Part I</title>
-      <link>https://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</link>
-      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</guid>
-      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
-&lt;!-- /BLOGDOWN-HEAD --&gt;
-
-&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
-&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
-&lt;p&gt;This blog is made of one philosophy resting on four pillars: it should cost exactly nothing and all the software you need are the following.&lt;/p&gt;
-&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
-&lt;li&gt;&lt;p&gt;The R programming language for data analysis.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The R Markdown language for content generation and typesetting.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Blogdown in conjunction with Hugo to generate the web pages.&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Github-Pages for webhosting.&lt;/p&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;This post will mainly touch on 1 and 2. Part II will focus on 3 and 4 so you can get your own blog up and running if you want to follow in my footsteps.&lt;/p&gt;
-&lt;div id=&#34;the-r-programming-language&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;The R Programming Language&lt;/h2&gt;
-&lt;p&gt;R is a programming language designed for statistical computation. It has very powerful data manipulation and 2d plotting capabilities. However to use it to its full potential you need to let go of graphical user interfaces and start writing R scripts. If you have always relied on GUI before, you should know that having to code everything is a good thing! Imagine having to explain to someone which buttons to click and how far he has to move the slider to get the same result you have. If you did everything in R all you need to do is just showing them the code.&lt;/p&gt;
-&lt;p&gt;To get R up and running on your computer, download and install the R distribution for your operating system from the &lt;a href=&#34;https://cran.r-project.org/&#34;&gt;official website&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;div id=&#34;r-markdown&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;R Markdown&lt;/h2&gt;
-&lt;p&gt;Perhaps the most important reason to create a blog site this way is none other than R Markdown. You can think of R Markdown as a language that allows you to quickly generate decent looking webpages with embedded R codes, graphics and even &lt;span class=&#34;math inline&#34;&gt;\(\LaTeX\)&lt;/span&gt; expressions for mathematical equations. It is an incredibly efficient language in the sense that almost every single thing you type goes directly to the content you want to show to your audience as opposed to tweaking various display or formatting parameters.&lt;/p&gt;
-&lt;p&gt;I use the popular &lt;a href=&#34;https://www.rstudio.com/products/rstudio/#Desktop&#34;&gt;RStudio&lt;/a&gt; to write R Markdown files. Be sure to install R first if you haven’t done so already.&lt;/p&gt;
-&lt;p&gt;Once you have RStudio installed go ahead and launch it. Type the following lines in the console to install all the packages you need for R Markdown:&lt;/p&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;install.packages(&amp;#39;rmarkdown&amp;#39;)&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;I won’t go into how to use RStudio or write R Markdown files here because there are many excellent &lt;a href=&#34;https://www.r-bloggers.com/r-markdown-and-knitr-tutorial-part-1/&#34;&gt;tutorials&lt;/a&gt; on the subject already. The reason I bring them up is because there are nice tools out there that help us convert content generated by R Markdown to content readable on a blog like this one. Part II will talk about how to set up free webhosting using Github-Pages and configure Blogdown and Hugo to generate the static webpages for the blog site.&lt;/p&gt;
 &lt;/div&gt;
 </description>
     </item>
