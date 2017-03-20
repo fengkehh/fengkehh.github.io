@@ -9,7 +9,7 @@
     <atom:link href="https://fengkehh.github.io/tags/r-markdown/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>How This Blog is Made Part I</title>
+      <title>Making A Blog Site with RStudio, R Markdown and Blogdown Part I</title>
       <link>https://fengkehh.github.io/post/2017-03-15-how-this-blog-is-made/</link>
       <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
       
