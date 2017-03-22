@@ -61,7 +61,7 @@ reading!&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;#effect-of-supplement-type&#34;&gt;4.2 Effect of Supplement Type&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#all-combinations&#34;&gt;4.3 All combinations&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;5. Conclusion&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#references&#34;&gt;References&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -254,7 +254,7 @@ two_sample_bootstrap &amp;lt;- function(bs1, bs2) {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div id=&#34;conclusion&#34; class=&#34;section level2&#34;&gt;
-&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;h2&gt;5. Conclusion&lt;/h2&gt;
 &lt;p&gt;Combinging the analysis done for the effect of dosage and supplement type, it is clear that higher dosages of vitamin C results in longer odontoblast lengths and orange juice in general is more effective at producing longer lengths compared to ascorbic acid. However, comparison between all possible combination shows that the higher effectiveness of orange juice is only significant at dosages equal or lower than 1 mg/day.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;references&#34; class=&#34;section level2 unnumbered&#34;&gt;
