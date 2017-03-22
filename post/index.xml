@@ -60,18 +60,18 @@
 &lt;/div&gt;
 &lt;div id=&#34;exploratory-analysis&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;3. Exploratory Analysis&lt;/h2&gt;
-&lt;p&gt;The data is first factored into six groups for each supplement type and each dosage. Each observation group is referred to by supplement type followed by dosage. For example, ascorbic acid delivered at 2 mg/day is referred to as VC 2. The mean tooth length under each supplement types and each dosage is shown in Figure 1.&lt;/p&gt;
-&lt;div class=&#34;figure&#34;&gt;
-&lt;img src=&#34;../post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths_files/figure-html/panel_plot-1.png&#34; alt=&#34;Median tooth lengths from each supplement type and dosage.&#34; width=&#34;672&#34; /&gt;
+The data is first factored into six groups for each supplement type and each dosage. Each observation group is referred to by supplement type followed by dosage. For example, ascorbic acid delivered at 2 mg/day is referred to as VC 2. The mean tooth length under each supplement types and each dosage is shown in &lt;a href=&#34;#fig:boxplot&#34;&gt;1&lt;/a&gt;.
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:boxplot&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;../post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths_files/figure-html/boxplot-1.png&#34; alt=&#34;Lengths by Type and Dosage&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-(#fig:panel_plot)Median tooth lengths from each supplement type and dosage.
+Figure 1: Lengths by Type and Dosage
 &lt;/p&gt;
 &lt;/div&gt;
-&lt;p&gt;Notice that the medians deviate from the middle for some of the groups. Also, each group with the a specific supplement type and dosage has a fairly small sample size (10). It is important to test the normality of the data before committing to a test that requires a normal distribution. Distribution for each supplement and dosage is shown in Figure 2.&lt;/p&gt;
+&lt;p&gt;Notice that the medians deviate from the middle for some of the groups. Also, each group with the a specific supplement type and dosage has a fairly small sample size (10). It is important to test the normality of the data before committing to a test that requires a normal distribution. Distribution for each supplement and dosage is shown in &lt;a href=&#34;#fig:normality&#34;&gt;2&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:normality&#34;&gt;&lt;/span&gt;
 &lt;img src=&#34;../post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths_files/figure-html/normality-1.png&#34; alt=&#34;Sample Distributions&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 1: Sample Distributions
+Figure 2: Sample Distributions
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;It is clear that for some groups the distributions are not normal. This is possibly due to the small sample size. Since most hypothesis tests require normal distributions for the samples, an empirical bootstrap is used to alleviate the problem.&lt;/p&gt;
@@ -115,8 +115,8 @@ two_sample_bootstrap &amp;lt;- function(bs1, bs2) {
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;div id=&#34;effect-of-dosage&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;4.1 Effect of Dosage&lt;/h3&gt;
-&lt;p&gt;It may be of interest to limit the deciding factor to just the dosage. In this case the groups are only differentiated by the dosage factor. Another set of bootstrap tests is carried out for a modification of the original assertion:&lt;/p&gt;
-&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \bar{X}_{2} - \bar{X}_{1} = \bar{X}_{2} - \bar{X}_{0.5} = \bar{X}_{1} - \bar{X}_{0.5} = 0 \]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[H_A: \bar{X}_{2} &amp;gt; \bar{X}_{1}, \bar{X}_{2} &amp;gt; \bar{X}_{0.5}, \bar{X}_{1} &amp;gt; \bar{X}_{0.5}\]&lt;/span&gt; Once again one-sided two-sample bootstrap tests are carried out to check if 2 mg/day average is greater than other groups. The p-values are listed below:&lt;/p&gt;
+&lt;p&gt;It may be of interest to limit the deciding factor to just the dosage. In this case the groups are only differentiated by the dosage factor. The following hypothesis is formed:&lt;/p&gt;
+&lt;p&gt;&lt;span class=&#34;math display&#34;&gt;\[H_0: \bar{X}_{2} - \bar{X}_{1} = \bar{X}_{2} - \bar{X}_{0.5} = \bar{X}_{1} - \bar{X}_{0.5} = 0 \]&lt;/span&gt; &lt;span class=&#34;math display&#34;&gt;\[H_A: \bar{X}_{2} &amp;gt; \bar{X}_{1}, \bar{X}_{2} &amp;gt; \bar{X}_{0.5}, \bar{X}_{1} &amp;gt; \bar{X}_{0.5}\]&lt;/span&gt; In other words, the null hypothesis is that dosage has no significant effect on odontoblast lengths. The alternative hypothesis is that 2mg/day results in the greatest average length while 0.5mg/day results in the shortest average length. One-sided two-sample bootstrap tests are carried out to check if 2 mg/day average is greater than other groups. The p-values are listed below:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;##   (X2 &amp;gt; X1) (X2 &amp;gt; X0.5) (X1 &amp;gt; X0.5) 
 ##           0           0           0&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;With such small p-values it is safe to reject the null hypothesis. Therefore the alternative hypothesis, that is 2mg/day of vitamin C produces longer lengths than both 1mg/day and 0.5mg/day and 1mg/day produces longer lengths than 0.5mg/day, can be accepted.&lt;/p&gt;
