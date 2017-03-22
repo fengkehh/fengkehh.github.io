@@ -235,7 +235,7 @@ two_sample_bootstrap &amp;lt;- function(bs1, bs2) {
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;The following alternative hypothesis should therefore be accepted for making the cutoff at P = 0.05:&lt;/p&gt;
+&lt;p&gt;This table has to be read as The P value for the alternative hypothesis (row name) &amp;gt; (column name). The following alternative hypothesis should therefore be accepted for making the cutoff at P = 0.05:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## [1] OJ_0.5 &amp;gt; VC_0.5, P-val = 0.002
 ## [1] VC_1 &amp;gt; OJ_0.5, P-val = 0.006
 ## [1] VC_1 &amp;gt; VC_0.5, P-val = 0
