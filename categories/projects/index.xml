@@ -41,7 +41,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;data-summary&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;2. Data Summary&lt;/h2&gt;
-&lt;p&gt;According to the &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html&#34;&gt;R documentation&lt;/a&gt;, ToothGrowth is a data frame containing the following variables:&lt;/p&gt;
+&lt;p&gt;ToothGrowth is a built-in R dataset. According to the &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/ToothGrowth.html&#34;&gt;R documentation&lt;/a&gt;, ToothGrowth is a data frame containing the following variables:&lt;/p&gt;
 &lt;ol style=&#34;list-style-type: decimal&#34;&gt;
 &lt;li&gt;len (numeric): Tooth length of guinea pigs.&lt;/li&gt;
 &lt;li&gt;supp (factor): Supplement type (VC for ascorbic acid or OJ for orange juice).&lt;/li&gt;
