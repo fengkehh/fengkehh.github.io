@@ -69,7 +69,7 @@ reading!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
-&lt;p&gt;This is a rather elaborate expansion to a project I did for the &lt;code&gt;Regression Models&lt;/code&gt; course certificate by Johns Hopkins University on Coursera. You can find the more concise but also more limited (and also a bit wrong) original report &lt;a href=&#34;../../doc/regression_report.pdf&#34;&gt;here&lt;/a&gt; in pdf format.&lt;/p&gt;
+&lt;p&gt;This is a rather elaborate expansion to a project I did for the &lt;strong&gt;Regression Models&lt;/strong&gt; course certificate by Johns Hopkins University on Coursera. You can find the more concise but also more limited (and also a bit wrong) original report &lt;a href=&#34;../../doc/regression_report.pdf&#34;&gt;here&lt;/a&gt; in pdf format.&lt;/p&gt;
 &lt;p&gt;The torque and speed output of an internal combustion engine is controlled using a set of gears. Originally, vehicles require the drivers to manually shift the gears during operation according to the road condition and speed of the vehicle to achieve optimal performance. The advent of automatic transmission allows motor vehicles to automate the gear shifting process without direct human input. Naturally it raises the question, can a competent driver at the helm of a manual transmission car beat an automatic transmission car in terms of fuel efficiency? This report aims to discover the potential effect of transmission type on vehicle fuel economy.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;data-ingress-preparation&#34; class=&#34;section level1&#34;&gt;
