@@ -43,6 +43,286 @@ reading!&lt;/p&gt;
     </item>
     
     <item>
+      <title>Can Car Transmission Affect Fuel Efficiency?</title>
+      <link>https://fengkehh.github.io/post/2017-03-30-can-car-transmission-affect-fuel-efficiency/</link>
+      <pubDate>Thu, 30 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fengkehh.github.io/post/2017-03-30-can-car-transmission-affect-fuel-efficiency/</guid>
+      <description>&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#synopsis&#34;&gt;Synopsis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#data-ingress-preparation&#34;&gt;Data Ingress &amp;amp; Preparation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#exploratory-data-analysis&#34;&gt;Exploratory Data Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#regression-analysis&#34;&gt;Regression Analysis&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#model-selection&#34;&gt;Model Selection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#residual-analysis&#34;&gt;Residual Analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#model-interpretation&#34;&gt;Model Interpretation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#conclusion&#34;&gt;Conclusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#digression&#34;&gt;Digression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div id=&#34;synopsis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Synopsis&lt;/h1&gt;
+&lt;p&gt;The relationship between fuel efficiency and car transmission type is studied using the &lt;code&gt;mtcars&lt;/code&gt; dataset. A model is built using MLR and regression analysis is carried out. Hypothesis tests suggest that while weight, horsepower and &lt;em&gt;certain&lt;/em&gt; number of engine cylinders are significant factors in fuel efficiency, transmission type and having 8-cylinder engine is not.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This is a rather elaborate expansion to a project I did for the &lt;code&gt;Regression Models&lt;/code&gt; course certificate by Johns Hopkins University on Coursera. You can find the more concise but also more limited (and also a bit wrong) original report &lt;a href=&#34;../../doc/regression_report.pdf&#34;&gt;here&lt;/a&gt; in pdf format.&lt;/p&gt;
+&lt;p&gt;The torque and speed output of an internal combustion engine is controlled using a set of gears. Originally, vehicles require the drivers to manually shift the gears during operation according to the road condition and speed of the vehicle to achieve optimal performance. The advent of automatic transmission allows motor vehicles to automate the gear shifting process without direct human input. Naturally it raises the question, can a competent driver at the helm of a manual transmission car beat an automatic transmission car in terms of fuel efficiency? This report aims to discover the potential effect of transmission type on vehicle fuel economy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;data-ingress-preparation&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Data Ingress &amp;amp; Preparation&lt;/h1&gt;
+&lt;p&gt;Required libraries and data are loaded using the following code. Motor vehicle road test performance is obtained from the mtcars dataset.&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(dplyr) # for data manipulation
+library(ggplot2) # for faceted histograms
+library(knitr) # for tables
+data(mtcars) # load data needed&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The origin of the data and a list of variables contained can be found on its &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34;&gt;R documentation page&lt;/a&gt;. A list of them are presented in Table &lt;a href=&#34;#tab:var-matrix&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;caption&gt;&lt;span id=&#34;tab:var-matrix&#34;&gt;Table 1: &lt;/span&gt;List of mtcars Variables&lt;/caption&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Description&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Categorical&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;am&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Transmission (0 = automatic, 1 = manual)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;cyl&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Number of cylinders (4, 6, or 8)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;vs&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;V or Straight Engine (0 for v, 1 for s)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;gear&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Number of forward gears (3, 4 or 5)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;carb&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Number of carburetors (1, 2, 3, 4, 6 or 8)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;mpg&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Miles/(US) gallon&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;disp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Displacement (cubic inches)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;hp&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Gross horsepower (hp)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;wt&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Weight (1000 lbs)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;qsec&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1/4 mile time (sec)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;drat&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;Rear Axle Ratio&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;No&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The outcome variable of primary interest is &lt;code&gt;mpg&lt;/code&gt; which measures fuel efficiency. The predictor of interest is &lt;code&gt;am&lt;/code&gt;, which categorizes transmission type. However other variables may or may not have an effect on fuel efficiency as well.&lt;/p&gt;
+&lt;p&gt;To allow logical interpretations during regression analysis, the potential non-categorical predictors are centered and categorical predictors are converted to multi-level factors with the following code:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;mtcars &amp;lt;- mutate(mtcars,
+                 amf = factor(am, labels = c(&amp;#39;auto&amp;#39;, &amp;#39;manual&amp;#39;)),
+                 cylf = factor(cyl),
+                 vsf = factor(vs, labels = c(&amp;#39;v&amp;#39;, &amp;#39;s&amp;#39;)),
+                 gearf = factor(gear),
+                 carbf = factor(carb),
+                 hpc = (hp - mean(hp)),
+                 wtc = (wt - mean(wt)),
+                 dratc = (drat - mean(drat)),
+                 dispc = (disp - mean(disp)),
+                 qsec = (qsec - mean(qsec))
+                 )&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div id=&#34;exploratory-data-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Exploratory Data Analysis&lt;/h1&gt;
+&lt;p&gt;Boxplot of MPG values of all cars grouped by transmission type is shown in Figure &lt;a href=&#34;#fig:amfplot&#34;&gt;1&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:amfplot&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;./post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/amfplot-1.png&#34; alt=&#34;MPG vs Transmission&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 1: MPG vs Transmission
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Judging by this alone it seems to suggest that cars with manual transmission achieves higher fuel efficiency compared to cars with automatic transmission. Boxplots showing MPG vs transmission type colored by the other categorical predictors are shown in Figure &lt;a href=&#34;#fig:categorical-panel&#34;&gt;2&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:categorical-panel&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;./post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/categorical-panel-1.png&#34; alt=&#34;MPG vs Categorical Variables&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 2: MPG vs Categorical Variables
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;It can be seen that&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;Although there are cases where no data exists for one of the transmission types, manual transmission generally results in higher mpg.&lt;/li&gt;
+&lt;li&gt;Number of cylinders, number of carburetors, and V/S engine type are categorical variables that seem to have an effect on mpg. The effect of gears is not as clear.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Scatter plots showing the effect of non-categorical variables on MPG are shown in Figure &lt;a href=&#34;#fig:non-categorical&#34;&gt;3&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:non-categorical&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;./post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/non-categorical-1.png&#34; alt=&#34;MPG vs Non-Categorical Variagbles&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 3: MPG vs Non-Categorical Variagbles
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There seems to be associations between mpg and displacement, horsepower and weight. Interestingly automatic transmission now seems to be associated with the &lt;strong&gt;higher&lt;/strong&gt; mpg. This demonstrates that conflicting patterns exist in mpg, particularly with transmission type. Identifying exactly which relationships are significant will be accomplished using &lt;em&gt;regression analysis&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;regression-analysis&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Regression Analysis&lt;/h1&gt;
+&lt;div id=&#34;model-selection&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model Selection&lt;/h2&gt;
+&lt;p&gt;Since all categorical variables have been transformed into factors, they will be dummy-coded when used as a predictor in MLR. Since the interest is to check the effect of transmission type &lt;code&gt;amf&lt;/code&gt; is included as the first predictor. Nested MLR fits are then generated with increasing model complexities first with non-categorical variables. ANOVA-F test is carried out:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fit0 &amp;lt;- lm(mpg ~ amf, data = mtcars)
+fit1 &amp;lt;- update(fit0, mpg ~ amf + wtc)
+fit2 &amp;lt;- update(fit1, mpg ~ amf + wtc + hpc)
+fit3 &amp;lt;- update(fit2, mpg ~ amf + wtc + hpc + dratc)
+fit4 &amp;lt;- update(fit3, mpg ~ amf + wtc + hpc + dratc + qsec)
+fit5 &amp;lt;- update(fit4, mpg ~ amf + wtc + hpc + dratc + qsec + disp)
+
+anova(fit0, fit1, fit2, fit3, fit4, fit5)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table
+## 
+## Model 1: mpg ~ amf
+## Model 2: mpg ~ amf + wtc
+## Model 3: mpg ~ amf + wtc + hpc
+## Model 4: mpg ~ amf + wtc + hpc + dratc
+## Model 5: mpg ~ amf + wtc + hpc + dratc + qsec
+## Model 6: mpg ~ amf + wtc + hpc + dratc + qsec + disp
+##   Res.Df    RSS Df Sum of Sq       F    Pr(&amp;gt;F)    
+## 1     30 720.90                                   
+## 2     29 278.32  1    442.58 73.7170 6.325e-09 ***
+## 3     28 180.29  1     98.03 16.3280 0.0004461 ***
+## 4     27 176.96  1      3.33  0.5540 0.4636198    
+## 5     26 158.64  1     18.33  3.0525 0.0928895 .  
+## 6     25 150.09  1      8.55  1.4233 0.2440542    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;According to the F-test statistics, weight and horsepower are relevant predictors in addition to transmission type while the rest are not. A similar process is done with categorical variables:&lt;/p&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;fit_1 &amp;lt;- update(fit0, mpg ~ amf + cylf)
+fit_2 &amp;lt;- update(fit_1, mpg ~ amf + cylf + carbf)
+fit_3 &amp;lt;- update(fit_2, mpg ~ amf + cylf + carbf + vsf)
+fit_4 &amp;lt;- update(fit_3, mpg ~ amf + cylf + carbf + vsf + gearf)
+
+anova(fit0, fit_1, fit_2, fit_3, fit_4)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table
+## 
+## Model 1: mpg ~ amf
+## Model 2: mpg ~ amf + cylf
+## Model 3: mpg ~ amf + cylf + carbf
+## Model 4: mpg ~ amf + cylf + carbf + vsf
+## Model 5: mpg ~ amf + cylf + carbf + vsf + gearf
+##   Res.Df    RSS Df Sum of Sq       F    Pr(&amp;gt;F)    
+## 1     30 720.90                                   
+## 2     28 264.50  2    456.40 24.6539 4.004e-06 ***
+## 3     23 195.61  5     68.88  1.4884    0.2378    
+## 4     22 191.86  1      3.76  0.4057    0.5314    
+## 5     20 185.12  2      6.73  0.3636    0.6996    
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Once again, F-test shows that the number of cylinders is important while the rest can be safely ignored. A final check is done for just the predictors we have selected so far, &lt;code&gt;amf&lt;/code&gt;, &lt;code&gt;cylf&lt;/code&gt;, &lt;code&gt;wtc&lt;/code&gt;, and &lt;code&gt;hpc&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## Analysis of Variance Table
+## 
+## Model 1: mpg ~ amf
+## Model 2: mpg ~ amf + cylf
+## Model 3: mpg ~ amf + cylf + wtc
+## Model 4: mpg ~ amf + cylf + wtc + hpc
+##   Res.Df    RSS Df Sum of Sq       F    Pr(&amp;gt;F)    
+## 1     30 720.90                                   
+## 2     28 264.50  2    456.40 39.2861 1.388e-08 ***
+## 3     27 182.97  1     81.53 14.0354 0.0009026 ***
+## 4     26 151.03  1     31.94  5.4991 0.0269346 *  
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;As the ANOVA F test indicates, all selected predictors (besides &lt;code&gt;amf&lt;/code&gt; because it was never really checked besides against the trivial model, the constant mean) are shown to be significant. The fit &lt;code&gt;final3&lt;/code&gt;, with transmission type, number of cylinders, weight and horsepower as the predictors, is selected to be the final model for interpretation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;residual-analysis&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Residual Analysis&lt;/h2&gt;
+&lt;p&gt;The residual plot is shown in Figure &lt;a href=&#34;#fig:residual&#34;&gt;4&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:residual&#34;&gt;&lt;/span&gt;
+&lt;img src=&#34;./post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/residual-1.png&#34; alt=&#34;Residual Analysis&#34; width=&#34;672&#34; /&gt;
+&lt;p class=&#34;caption&#34;&gt;
+Figure 4: Residual Analysis
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;It can be seen that residuals vs fitted never deviate to more than 2 standard units away from 0. The QQ plot shows that the residual conforms to the normal distribution pretty well although at the far right side it seems to become a bit too wide. Scale-Location vs predictors plot shows a relatively horizontal line so the variance of residual is pretty constant (satisfies homoscedasticity) and finally the points that are furthest away from 0 have pretty low leverage so the fit should be fairly representative of the sample. Overall, the selection seems to be good.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;model-interpretation&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Model Interpretation&lt;/h2&gt;
+&lt;p&gt;The summary for the selected model are shown below.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;## 
+## Call:
+## lm(formula = mpg ~ amf + cylf + wtc + hpc, data = mtcars)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.9387 -1.2560 -0.4013  1.1253  5.0513 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&amp;gt;|t|)    
+## (Intercept) 20.96535    1.56753  13.375 3.65e-13 ***
+## amfmanual    1.80921    1.39630   1.296  0.20646    
+## cylf6       -3.03134    1.40728  -2.154  0.04068 *  
+## cylf8       -2.16368    2.28425  -0.947  0.35225    
+## wtc         -2.49683    0.88559  -2.819  0.00908 ** 
+## hpc         -0.03211    0.01369  -2.345  0.02693 *  
+## ---
+## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1
+## 
+## Residual standard error: 2.41 on 26 degrees of freedom
+## Multiple R-squared:  0.8659, Adjusted R-squared:  0.8401 
+## F-statistic: 33.57 on 5 and 26 DF,  p-value: 1.506e-10&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The adjusted &lt;span class=&#34;math inline&#34;&gt;\(R^2\)&lt;/span&gt; value is 0.84, which means 84% of the sample MPG variance is explained by the MLR. The model coefficients can be interpreted as follows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;(Intercept): a car can drive 20.97 miles per gallon if it is at the average sample weight and horsepower and uses automatic transmission with a 4-cylinder engine.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;amfmanual&lt;/code&gt;: a car can drive 1.81 miles per gallon more if you switch from automatic transmission to manual while keeping everything else constant.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cylf6&lt;/code&gt;: a car will drive 3.03 miles per gallon less if you switch from a 4-cylinder engine to a 6 cylinder engine while keeping everything else constant.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cylf8&lt;/code&gt;: a car will drive 2.16 miles per gallon less if you switch from a 4-cylinder engine to an 8 cylinder engine while keeping everything else constant.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;wtc&lt;/code&gt;: a car will drive 2.50 miles per gallon less if you increase its weight by 1000 lbs while keeping everything else constant.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;hpc&lt;/code&gt;: a car will drive 0.03 miles per gallon less if you increase its engine horsepower by 1 hp while keeping everything else constant.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It should be noted that the P values for &lt;code&gt;amfmanual&lt;/code&gt; and &lt;code&gt;cylf8&lt;/code&gt; are larger than the traditional cutoff value of 0.05. This means they are &lt;strong&gt;not&lt;/strong&gt; statistically significant. Thus the null hypothesis (&lt;span class=&#34;math inline&#34;&gt;\(\beta_i = 0\)&lt;/span&gt;) for these coefficients cannot be rejected and it must be concluded that they do not have significant effects on MPG.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;conclusion&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Using MLR analysis a model is constructed to reflect the association of fuel efficiency, mpg with transmission type, number of cylinders, horsepower and weight. Residual analysis shows that the model is a good fit. Interestingly, T-test on the model coefficients reveals that the null hypothesis for the transmission type and 8-cylinder engine coefficients cannot be rejected. The evidence therefore suggests that switching the transmission from automatic to manual or the number of cylinders in the engine is increased from 4 to 8 &lt;strong&gt;does not&lt;/strong&gt; have statistically significant effect on fuel efficiency despite what one may conclude based purely on first glance on boxplots such as those in Figure &lt;a href=&#34;#fig:amfplot&#34;&gt;1&lt;/a&gt; and &lt;a href=&#34;#fig:categorical-panel&#34;&gt;2&lt;/a&gt;. Fuel efficiency seems to depend more significantly on weight and horsepower.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;digression&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Digression&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;The fact that cylf8 is insignificant is counter intuitive as cylf6 seems to have a significant effect on fuel efficiency. Coefficient for cylf8 is also &lt;em&gt;more positive&lt;/em&gt; than that of cylf6, suggesting that increasing cylinder number past 6 may actually increase fuel efficiency relative to a 6-cylinder car. Without consulting with an automobile engineer one cannot say with certainty if that is reasonable. If it is not then this may be a sign that there are problems with the data collected for 8 cylinder cars.&lt;/li&gt;
+&lt;li&gt;As with all things manual, the competence of the driver is a huge factor that should be considered. It is reasonable to believe that a terrible driver not accustomed to driving a manual transmission car will ressult in suboptimal fuel efficiency as well. Since the data does not contain any metrics for competency it is assumed that all data is collected under optimal performance.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+    <item>
       <title>The Effects of Vitamin C Supplements on Guinea Pig Odontoblast Lengths</title>
       <link>https://fengkehh.github.io/post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths/</link>
       <pubDate>Tue, 21 Mar 2017 00:00:00 +0000</pubDate>
