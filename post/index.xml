@@ -225,7 +225,7 @@ anova(fit0, fit_1, fit_2, fit_3, fit_4)&lt;/code&gt;&lt;/pre&gt;
 ## 4     26 151.03  1     31.94  5.4991 0.0269346 *  
 ## ---
 ## Signif. codes:  0 &amp;#39;***&amp;#39; 0.001 &amp;#39;**&amp;#39; 0.01 &amp;#39;*&amp;#39; 0.05 &amp;#39;.&amp;#39; 0.1 &amp;#39; &amp;#39; 1&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;As the ANOVA F test indicates, all selected predictors (besides &lt;code&gt;amf&lt;/code&gt; because it was never really checked besides against the trivial model, the constant mean) are shown to be significant. The fit &lt;code&gt;final3&lt;/code&gt;, with transmission type, number of cylinders, weight and horsepower as the predictors, is selected to be the final model for interpretation.&lt;/p&gt;
+&lt;p&gt;As the ANOVA F test indicates, all selected predictors (besides &lt;code&gt;amf&lt;/code&gt; because it was never really checked except against the trivial model, the constant mean) are shown to be significant. The fit &lt;code&gt;final3&lt;/code&gt;, with transmission type, number of cylinders, weight and horsepower as the predictors, is selected to be the final model for interpretation.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;residual-analysis&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Residual Analysis&lt;/h2&gt;
