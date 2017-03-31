@@ -152,9 +152,9 @@ Figure 2: MPG vs Categorical Variables
 &lt;/ol&gt;
 &lt;p&gt;Figure &lt;a href=&#34;#fig:non-categorical&#34;&gt;3&lt;/a&gt; shows the effect of non-categorical variables on MPG:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;&lt;span id=&#34;fig:non-categorical&#34;&gt;&lt;/span&gt;
-&lt;img src=&#34;../post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/non-categorical-1.png&#34; alt=&#34;MPG vs Non-Categorical Variagbles&#34; width=&#34;672&#34; /&gt;
+&lt;img src=&#34;../post/2017-03-30-can-car-transmission-affect-fuel-efficiency_files/figure-html/non-categorical-1.png&#34; alt=&#34;MPG vs Non-Categorical Variables&#34; width=&#34;672&#34; /&gt;
 &lt;p class=&#34;caption&#34;&gt;
-Figure 3: MPG vs Non-Categorical Variagbles
+Figure 3: MPG vs Non-Categorical Variables
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;There seems to be associations between mpg and displacement, horsepower and weight. Interestingly automatic transmission now seems to be associated with the &lt;strong&gt;higher&lt;/strong&gt; mpg. This demonstrates that conflicting patterns exist in mpg, particularly with transmission type. Identifying exactly which relationships are significant will be accomplished using &lt;em&gt;regression analysis&lt;/em&gt;.&lt;/p&gt;
