@@ -33,6 +33,12 @@
   </url>
   
   <url>
+    <loc>https://fengkehh.github.io/tags/anova/</loc>
+    <lastmod>2017-03-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://fengkehh.github.io/tags/beginner/</loc>
     <lastmod>2017-03-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -69,6 +75,12 @@
   
   <url>
     <loc>https://fengkehh.github.io/tags/hypothesis-test/</loc>
+    <lastmod>2017-03-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengkehh.github.io/tags/model-selection/</loc>
     <lastmod>2017-03-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
