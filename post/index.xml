@@ -283,7 +283,7 @@ Figure 4: Residual Analysis
 &lt;h1&gt;Digression&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;The fact that cylf8 is insignificant is counter intuitive as cylf6 seems to have a significant effect on fuel efficiency. Coefficient for cylf8 is also &lt;em&gt;more positive&lt;/em&gt; than that of cylf6, suggesting that increasing cylinder number past 6 may actually increase fuel efficiency relative to a 6-cylinder car. Without consulting with an automobile engineer one cannot say with certainty if that is reasonable. If it is not then this may be a sign that there are problems with the data collected for 8 cylinder cars.&lt;/li&gt;
-&lt;li&gt;As with all things manual, the competence of the driver is a huge factor that should be considered. It is reasonable to believe that a terrible driver not accustomed to driving a manual transmission car will ressult in suboptimal fuel efficiency as well. Since the data does not contain any metrics for competency it is assumed that all data is collected under optimal performance.&lt;/li&gt;
+&lt;li&gt;As with all things manual, the competence of the driver is a huge factor that should be considered. It is reasonable to believe that a terrible driver not accustomed to driving a manual transmission car will cause suboptimal fuel efficiency. Since the data does not contain any metrics for competency it is assumed that all data is collected under optimal performance.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 </description>
