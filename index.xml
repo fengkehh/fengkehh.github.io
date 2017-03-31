@@ -273,7 +273,7 @@ Figure 4: Residual Analysis
 &lt;/div&gt;
 &lt;div id=&#34;model-interpretation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Model Interpretation&lt;/h2&gt;
-&lt;p&gt;The summary for the selected model are shown below.&lt;/p&gt;
+&lt;p&gt;The summary for the selected model is shown below.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;## 
 ## Call:
 ## lm(formula = mpg ~ amf + cylf + wtc + hpc, data = mtcars)
