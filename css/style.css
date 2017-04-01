@@ -365,6 +365,11 @@ select {
 .logo {
 	padding: 20px;
 	overflow: hidden;
+	
+	display: block;
+    background: url(/img/logo.svg);
+    background-size: contain;
+
 }
 
 .logo__link {
@@ -375,6 +380,7 @@ select {
 .logo__title {
 	font-size: 32px;
 	font-size: 2rem;
+	color: #ffffff;
 	line-height: 1;
 }
 
