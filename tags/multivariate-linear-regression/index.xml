@@ -36,7 +36,7 @@
 &lt;/div&gt;
 &lt;div id=&#34;synopsis&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Synopsis&lt;/h1&gt;
-&lt;p&gt;The relationship between fuel efficiency and car transmission type is studied using the &lt;code&gt;mtcars&lt;/code&gt; dataset. A model is built using MLR and regression analysis is carried out. Hypothesis tests suggest that while weight, horsepower and &lt;em&gt;certain&lt;/em&gt; number of engine cylinders are significant factors in fuel efficiency, transmission type and having 8-cylinder engine is not.&lt;/p&gt;
+&lt;p&gt;The relationship between fuel efficiency and car transmission type is studied using the &lt;code&gt;mtcars&lt;/code&gt; dataset. A model is built using MLR and regression analysis is carried out. Hypothesis tests suggest that while weight, horsepower and &lt;em&gt;certain&lt;/em&gt; number of engine cylinders are significant factors in fuel efficiency, transmission type and having 8-cylinder engine are not.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
@@ -50,7 +50,7 @@
 library(ggplot2) # for faceted histograms
 library(knitr) # for tables
 data(mtcars) # load data needed&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;The origin of the data and a list of variables contained can be found on its &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34;&gt;R documentation page&lt;/a&gt;. A list of them are presented in Table &lt;a href=&#34;#tab:var-matrix&#34;&gt;1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The origin of the data can be found on its &lt;a href=&#34;https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html&#34;&gt;R documentation page&lt;/a&gt;. The included variables are listed in Table &lt;a href=&#34;#tab:var-matrix&#34;&gt;1&lt;/a&gt;:&lt;/p&gt;
 &lt;table&gt;
 &lt;caption&gt;&lt;span id=&#34;tab:var-matrix&#34;&gt;Table 1: &lt;/span&gt;List of mtcars Variables&lt;/caption&gt;
 &lt;thead&gt;
