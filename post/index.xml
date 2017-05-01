@@ -40,14 +40,8 @@
 &lt;p&gt;This is an interesting problem I ran across on &lt;a href=&#34;https://leetcode.com/problems/poor-pigs/#/description&#34;&gt;leetcode.com&lt;/a&gt;. I have included the description of it below.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;Answer this question, and write an algorithm for the follow-up general case.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;Follow-up:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
 &lt;p&gt;If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the “poison” bucket within p minutes? There is exact one bucket with poison.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;div id=&#34;additional-clarfications&#34; class=&#34;section level2&#34;&gt;
