@@ -73,7 +73,7 @@
 &lt;p&gt;No matter which bucket contains the poison you can always deduce it by looking at the combination of dead/alive states of P1 and P2 after 15 minutes. This works because the total number of combinations using the binary states of each pig is &lt;span class=&#34;math inline&#34;&gt;\(2^2 = 4 \ge n\)&lt;/span&gt; .&lt;/p&gt;
 &lt;p&gt;This can be extended for a larger number of buckets as well, for example, for n = 16 buckets we can do it with 4 pigs:&lt;/p&gt;
 &lt;p&gt;Buckets: &lt;code&gt;A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;P1: &lt;code&gt;A, B, C, D, E, F, G, H, I&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P1: &lt;code&gt;A, B, C, D, E, F, G, H&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;P2: &lt;code&gt;E, F, G, H, I, J, K, L&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;P3: &lt;code&gt;A, B, E, F, I, J, M, N&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;P4: &lt;code&gt;B, C, F, G, J, K, N, O&lt;/code&gt;&lt;/p&gt;
