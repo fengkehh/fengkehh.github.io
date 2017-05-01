@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Poor Pigs Problem</title>
+<meta name="description" content="Keh-Harng Feng&#39;s Personal blog about Data and Statistics">
+<meta name="generator" content="Hugo 0.19" />
+<meta property="og:title" content="The Poor Pigs Problem" />
+<meta property="og:description" content="An algorithm for the Poor Pigs Problem" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fengkehh.github.io/post/2017-04-26-the-poor-pigs-problem/" />
+
+
+
+<meta property="article:published_time" content="2017-04-30T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2017-04-30T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fengkehh.github.io/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="../../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="https://fengkehh.github.io/js/scripts.js"></script>
+
+<link rel="stylesheet" href="https://fengkehh.github.io/css/agate.css">
+<script src="https://fengkehh.github.io/js/highlight.pack.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="https://fengkehh.github.io/" title="A Song of Numbers and Graphs" rel="home">
+						<h1 class="logo__title">A Song of Numbers and Graphs</h1>
+						<h2 class="logo__tagline">A Blog about Data Analysis</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="../../categories/posts/">BLOG POSTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="../../categories/projects/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="../../about/">ABOUT THIS BLOG</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">The Poor Pigs Problem</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-04-30 00:00:00 &#43;0000 UTC">April 30, 2017</time>
+				<span class="post__meta-categories meta-categories">
+					<svg class="icon icon-category" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><path d="m7 2l1 2h8v11h-16v-13z"/></svg>
+					<a class="meta-categories__link" href="../../categories/posts" rel="category">Posts</a></span>
+			</p>
+		</header>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="../../tags/puzzle/" rel="tag">Puzzle</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/algorithm/" rel="tag">Algorithm</a></li>
+	</ul>
+</div>
+
+		<div class="post__content clearfix">
+			<!-- BLOGDOWN-HEAD -->
+<!-- /BLOGDOWN-HEAD -->
+
+<!-- BLOGDOWN-BODY-BEFORE -->
+<div id="TOC">
+<ul>
+<li><a href="#introduction">Introduction</a><ul>
+<li><a href="#additional-clarfications">Additional Clarfications</a></li>
+</ul></li>
+<li><a href="#the-binary-state-method">The Binary State Method</a><ul>
+<li><a href="#one-round-of-testing">One Round of Testing</a></li>
+<li><a href="#four-rounds-of-testing">Four Rounds of Testing</a></li>
+<li><a href="#back-to-the-original">Back to the Original</a><ul>
+<li><a href="#follow-up">Follow Up</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#digression">Digression</a></li>
+</ul>
+</div>
+<!-- /BLOGDOWN-BODY-BEFORE -->
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>This is an interesting problem I ran across on <a href="https://leetcode.com/problems/poor-pigs/#/description">leetcode.com</a>. I have included the description of it below.</p>
+<pre><code>There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.
+
+Answer this question, and write an algorithm for the follow-up general case.
+
+Follow-up:
+
+If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the &quot;poison&quot; bucket within p minutes? There is exact one bucket with poison.</code></pre>
+<div id="additional-clarfications" class="section level2">
+<h2>Additional Clarfications</h2>
+<p>I am going to work with the following details:</p>
+<ol style="list-style-type: decimal">
+<li><p>A pig has infinite speed when it comes to drinking from the buckets (ie: you can have one pig drink from all 1000 buckets in as short amount of time as you need and still receive a fatal dose).</p></li>
+<li><p>If a pig is poisoned it dies sometime <em>within</em> 15 minutes instead of at exactly the 15-minute mark. This ensures that you cannot use the trivial solution where you find the poisoned bucket by getting only one pig to drink all 1000 buckets and figure out the poisoned one by timing the pig’s death down to <span class="math inline">\(\frac{9}{10}\)</span> of a second.</p></li>
+</ol>
+</div>
+</div>
+<div id="the-binary-state-method" class="section level1">
+<h1>The Binary State Method</h1>
+<div id="one-round-of-testing" class="section level2">
+<h2>One Round of Testing</h2>
+<p>Disclaimer: I didn’t come up with this entirely by myself. Credit should also go to [Ting Zheng] (<a href="https://www.linkedin.com/in/ting-zheng-97a2267b/" class="uri">https://www.linkedin.com/in/ting-zheng-97a2267b/</a>).</p>
+<p>First let’s start with a simplified case with a total number of n = 4 buckets and <strong><em>only one round of testing</em></strong>.</p>
+<p>Buckets: <code>A, B, C, D</code></p>
+<p>Now take <strong>x = 2</strong> pigs and divide the buckets as follow:</p>
+<p>P1: <code>A, B</code></p>
+<p>P2: <code>B, C</code></p>
+<p>No pigs: <code>D</code></p>
+<p>No matter which bucket contains the poison you can always deduce it by looking at the combination of dead/alive states of P1 and P2 after 15 minutes. This works because the total number of combinations using the binary states of each pig is <span class="math inline">\(2^2 = 4 \ge n\)</span> .</p>
+<p>This can be extended for a larger number of buckets as well, for example, for n = 16 buckets we can do it with 4 pigs:</p>
+<p>Buckets: <code>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P</code></p>
+<p>P1: <code>A, B, C, D, E, F, G, H, I</code></p>
+<p>P2: <code>E, F, G, H, I, J, K, L</code></p>
+<p>P3: <code>A, B, E, F, I, J, M, N</code></p>
+<p>P4: <code>B, C, F, G, J, K, N, O</code></p>
+<p>Np Pigs: <code>P</code></p>
+<p>Here is a graphical representation of the above division of buckets to each pig:</p>
+<div class="figure">
+<img src="../../img/poor_pigs.png" />
+
+</div>
+<p>You can see that the buckets are divided into repeating sub-units of 4 similar to the 4-bucket case. Once again, total number of dead/alive combinations is <span class="math inline">\(2^4 = 16 \ge n\)</span>. In fact, for any n buckets you can find the poisoned one with a minimum of <span class="math inline">\(x = \lceil log_2(n) \rceil\)</span> pigs (ie: the smallest x to satisfy <span class="math inline">\(2^x \ge n\)</span>).</p>
+</div>
+<div id="four-rounds-of-testing" class="section level2">
+<h2>Four Rounds of Testing</h2>
+<p>Now we will consider the original question and allow <strong>four rounds</strong> per the original requirement. Let’s start with just a generalized number of buckets, n. Since we have 4 tries, we can start by cutting down the number of buckets that we have to test in detail as much as possible. We can do this by dividing the bottles into groups and test each group with just one pig to locate the group that contains the poison.</p>
+<p>If we have x pigs in total, we can divide n buckets into (x + 1) groups (if no pigs die then it must be the group that isn’t tested). Since the question asks for a minimum x pigs that guarantees finding the poision, we need to be conservative here and consider only the worst case scenario where we lose as many pigs as possible. So in this first division we lose one pig and have (x - 1) pigs left.</p>
+<p>We then repeat the process twice. Since we have lost a pig already, we can only divide into x groups now (and lose another pig in the process). Finally on the third division we have (x - 1) groups and lose one last pig. We now have (x - 3) pigs left and a group with approximately <span class="math inline">\(\frac{n}{(x + 1)(x)(x - 1)}\)</span> buckets. These are the buckets that we must test in detail on the last round using the binary state combinations of the (x - 3) pigs we have left in order to locate the poisoned bucket (at most <span class="math inline">\(2^{x - 3}\)</span> buckets).</p>
+<p>Working backward, we can see that the minimum amount of pigs we need is the smallest x that satisfies the following:</p>
+<span class="math display" id="eq:maxbuckets">\[\begin{equation}
+2^{x-3}(x+1)(x)(x-1) \ge n
+\tag{1}
+\end{equation}\]</span>
+<p>where x = number of pigs and n = number of buckets.</p>
+<p>Note that in order for eq <a href="#eq:maxbuckets">(1)</a> to make sense we must start with at least 4 pigs (otherwise you will run out of pigs in the worst case scenario). This means this particular method is only justified for a total number of buckets exceeding 120. For buckets less than 120 you may want to reduce the number of rounds dedicated to dividing buckets into groups and avoid losing pigs unnecessarily.</p>
+</div>
+<div id="back-to-the-original" class="section level2">
+<h2>Back to the Original</h2>
+<p>With n = 1000, the minimum x that satisfies equation <a href="#eq:maxbuckets">(1)</a> is x = 6. In fact, with 6 pigs you can test up to a whopping <strong><em>1680</em></strong> buckets in an hour!</p>
+<div id="follow-up" class="section level3">
+<h3>Follow Up</h3>
+<p>If pigs die within m minutes and we are given p minutes, then the number of test rounds is <span class="math inline">\(\lfloor{p}{m}\rfloor\)</span>. Out of these, <span class="math inline">\(\lfloor{p}{m}\rfloor - 1\)</span> rounds are used to divide buckets into groups and zoom in on the general location of the poison. Equation <a href="#eq:maxbuckets">(1)</a> can then be generalized to</p>
+<span class="math display" id="eq:generalized">\[\begin{equation}
+2^{x- \lfloor \frac{p}{m} \rfloor + 1}\prod_{i = 1}^{\lfloor \frac{p}{m} \rfloor - 1} (x + 2 - i) \ge n
+\tag{2}
+\end{equation}\]</span>
+</div>
+</div>
+</div>
+<div id="digression" class="section level1">
+<h1>Digression</h1>
+<p>There is an interesting suggestion proposed by <a href="https://discuss.leetcode.com/topic/67666/another-explanation-and-solution">StephanPochmann</a>. The suggestion essentially advocates arranging the buckets into 5x5 square matrices and use two pigs each to find the (x, y) coordinates of the poisoned bucket within four rounds of testing. If there are more than 25 buckets in total you can divide the buckets into units of 5x5 matrices and assign two pigs for each. It further postulates an extension of using 5 x 5 x 5 cubes and 3 pigs per cube. However, there are some problems:</p>
+<ol style="list-style-type: decimal">
+<li><p>While the method using square matrices is possible, the suggestion of further optimization using cubes is not. Suppose there is exactly one 5 x 5 x 5 cube of buckets and 3 pigs total for the 3 axis. Each pig can drink a max of 5 buckets on their respective axis. With 3 pigs you get 15 buckets tested per round. After 4 rounded you have only tested 15 x 4 = 60 buckets. That leaves 65 buckets untested in each cube! If you want guaranteed results you can only leave a maximum of <strong>1</strong> bucket untested out of all of the cubes.</p></li>
+<li><p>If the total number of buckets requires more than one matrix units you cannot systematically leave one bucket untested in each matrix because again, only one untested buckets out of all of the matrices combined is allowed for guaranteed result. Therefore in the cases where you have more than one matrix unit each matrix can only be 4 x 4 with the exception of a single 5 x 5 matrix at the beginning.</p></li>
+<li><p>Assuming p = 60 and m = 15 as per the original specification, since the number of buckets tested using the binary state method grows exponentially by the number of pigs, it quickly overtakes the matrix method in terms of efficiency as the number of buckets increases. Specifically, The matrix method can test 16 buckets using two pigs. Any n &gt; 16 requires you to divide them into matrix groups. This means x is roughly <span class="math inline">\(2\frac{n}{16}\)</span> -&gt; <span class="math inline">\(O(n)\)</span>. In comparison, the binary method is actually better than <span class="math inline">\(O(log(n))\)</span> (see <a href="#eq:maxbuckets">(1)</a>).</p></li>
+</ol>
+</div>
+
+		</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Keh-Harng Feng avatar" src="https://fengkehh.github.io/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Keh-Harng Feng</span>
+	</div>
+	<div class="authorbox__description">
+		Keh-Harng Feng is aspiring to become a data scientist. He graduated from York University with a MSc in Physics and University of Toronto with a BSc in Computer Science and Physics.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="https://fengkehh.github.io/post/2017-03-30-can-car-transmission-affect-fuel-efficiency/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">Can Car Transmission Affect Fuel Efficiency?</p></a>
+	</div>
+</nav>
+
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'datakhf';
+    var disqus_identifier = 'https:\/\/fengkehh.github.io\/post\/2017-04-26-the-poor-pigs-problem\/';
+    var disqus_title = 'The Poor Pigs Problem';
+    var disqus_url = 'https:\/\/fengkehh.github.io\/post\/2017-04-26-the-poor-pigs-problem\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-04-26-the-poor-pigs-problem/">The Poor Pigs Problem</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-30-can-car-transmission-affect-fuel-efficiency/">Can Car Transmission Affect Fuel Efficiency?</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths/">The Effects of Vitamin C Supplements on Guinea Pig Odontoblast Lengths</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-16-how-this-blog-is-made-part-ii/">Making A Blog Site with RStudio, R Markdown and Blogdown Part II</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-15-how-this-blog-is-made/">Making A Blog Site with RStudio, R Markdown and Blogdown Part I</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/">Posts</a></li>
+		</ul>
+	</div>
+</div>
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/algorithm" title="algorithm">algorithm</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/anova" title="anova">anova</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/beginner" title="beginner">beginner</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/blogdown" title="blogdown">blogdown</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/bootstrap" title="bootstrap">bootstrap</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/github" title="github">github</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hypothesis-test" title="hypothesis-test">hypothesis-test</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/model-selection" title="model-selection">model-selection</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/multivariate-linear-regression" title="multivariate-linear-regression">multivariate-linear-regression</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/puzzle" title="puzzle">puzzle</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/r" title="r">r</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/r-markdown" title="r-markdown">r-markdown</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/residual-analysis" title="residual-analysis">residual-analysis</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/statistical-inference" title="statistical-inference">statistical-inference</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2017 Keh-Harng Feng. Based on <a href="//wordpress.org/themes/mh-magazine-lite/" target="_blank" rel="nofollow noopener noreferrer">MH Magazine lite</a>.</p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script type="text/x-mathjax-config">
+
+    MathJax.Hub.Config({
+
+      tex2jax: {
+
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+
+      }
+
+    });
+
+</script>
+
+<script type="text/javascript"
+
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-96579173-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>

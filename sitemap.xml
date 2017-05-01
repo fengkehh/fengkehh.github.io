@@ -7,6 +7,11 @@
   </url>
   
   <url>
+    <loc>https://fengkehh.github.io/post/2017-04-26-the-poor-pigs-problem/</loc>
+    <lastmod>2017-04-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fengkehh.github.io/post/2017-03-30-can-car-transmission-affect-fuel-efficiency/</loc>
     <lastmod>2017-03-30T00:00:00+00:00</lastmod>
   </url>
@@ -29,6 +34,12 @@
   <url>
     <loc>https://fengkehh.github.io/</loc>
     <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengkehh.github.io/tags/algorithm/</loc>
+    <lastmod>2017-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -93,19 +104,25 @@
   
   <url>
     <loc>https://fengkehh.github.io/categories/posts/</loc>
-    <lastmod>2017-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2017-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fengkehh.github.io/post/</loc>
-    <lastmod>2017-03-30T00:00:00+00:00</lastmod>
+    <lastmod>2017-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fengkehh.github.io/categories/projects/</loc>
     <lastmod>2017-03-30T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fengkehh.github.io/tags/puzzle/</loc>
+    <lastmod>2017-04-30T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -6,8 +6,117 @@
     <description>Recent content in Posts on A Song of Numbers and Graphs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Apr 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://fengkehh.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>The Poor Pigs Problem</title>
+      <link>https://fengkehh.github.io/post/2017-04-26-the-poor-pigs-problem/</link>
+      <pubDate>Sun, 30 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://fengkehh.github.io/post/2017-04-26-the-poor-pigs-problem/</guid>
+      <description>&lt;!-- BLOGDOWN-HEAD --&gt;
+&lt;!-- /BLOGDOWN-HEAD --&gt;
+
+&lt;!-- BLOGDOWN-BODY-BEFORE --&gt;
+&lt;div id=&#34;TOC&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#additional-clarfications&#34;&gt;Additional Clarfications&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#the-binary-state-method&#34;&gt;The Binary State Method&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#one-round-of-testing&#34;&gt;One Round of Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#four-rounds-of-testing&#34;&gt;Four Rounds of Testing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#back-to-the-original&#34;&gt;Back to the Original&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#follow-up&#34;&gt;Follow Up&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#digression&#34;&gt;Digression&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;!-- /BLOGDOWN-BODY-BEFORE --&gt;
+&lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Introduction&lt;/h1&gt;
+&lt;p&gt;This is an interesting problem I ran across on &lt;a href=&#34;https://leetcode.com/problems/poor-pigs/#/description&#34;&gt;leetcode.com&lt;/a&gt;. I have included the description of it below.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.
+
+Answer this question, and write an algorithm for the follow-up general case.
+
+Follow-up:
+
+If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the &amp;quot;poison&amp;quot; bucket within p minutes? There is exact one bucket with poison.&lt;/code&gt;&lt;/pre&gt;
+&lt;div id=&#34;additional-clarfications&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Additional Clarfications&lt;/h2&gt;
+&lt;p&gt;I am going to work with the following details:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;A pig has infinite speed when it comes to drinking from the buckets (ie: you can have one pig drink from all 1000 buckets in as short amount of time as you need and still receive a fatal dose).&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If a pig is poisoned it dies sometime &lt;em&gt;within&lt;/em&gt; 15 minutes instead of at exactly the 15-minute mark. This ensures that you cannot use the trivial solution where you find the poisoned bucket by getting only one pig to drink all 1000 buckets and figure out the poisoned one by timing the pig’s death down to &lt;span class=&#34;math inline&#34;&gt;\(\frac{9}{10}\)&lt;/span&gt; of a second.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;the-binary-state-method&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;The Binary State Method&lt;/h1&gt;
+&lt;div id=&#34;one-round-of-testing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;One Round of Testing&lt;/h2&gt;
+&lt;p&gt;Disclaimer: I didn’t come up with this entirely by myself. Credit should also go to [Ting Zheng] (&lt;a href=&#34;https://www.linkedin.com/in/ting-zheng-97a2267b/&#34; class=&#34;uri&#34;&gt;https://www.linkedin.com/in/ting-zheng-97a2267b/&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;First let’s start with a simplified case with a total number of n = 4 buckets and &lt;strong&gt;&lt;em&gt;only one round of testing&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Buckets: &lt;code&gt;A, B, C, D&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Now take &lt;strong&gt;x = 2&lt;/strong&gt; pigs and divide the buckets as follow:&lt;/p&gt;
+&lt;p&gt;P1: &lt;code&gt;A, B&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P2: &lt;code&gt;B, C&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;No pigs: &lt;code&gt;D&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;No matter which bucket contains the poison you can always deduce it by looking at the combination of dead/alive states of P1 and P2 after 15 minutes. This works because the total number of combinations using the binary states of each pig is &lt;span class=&#34;math inline&#34;&gt;\(2^2 = 4 \ge n\)&lt;/span&gt; .&lt;/p&gt;
+&lt;p&gt;This can be extended for a larger number of buckets as well, for example, for n = 16 buckets we can do it with 4 pigs:&lt;/p&gt;
+&lt;p&gt;Buckets: &lt;code&gt;A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P1: &lt;code&gt;A, B, C, D, E, F, G, H, I&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P2: &lt;code&gt;E, F, G, H, I, J, K, L&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P3: &lt;code&gt;A, B, E, F, I, J, M, N&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;P4: &lt;code&gt;B, C, F, G, J, K, N, O&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Np Pigs: &lt;code&gt;P&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Here is a graphical representation of the above division of buckets to each pig:&lt;/p&gt;
+&lt;div class=&#34;figure&#34;&gt;
+&lt;img src=&#34;../../img/poor_pigs.png&#34; /&gt;
+
+&lt;/div&gt;
+&lt;p&gt;You can see that the buckets are divided into repeating sub-units of 4 similar to the 4-bucket case. Once again, total number of dead/alive combinations is &lt;span class=&#34;math inline&#34;&gt;\(2^4 = 16 \ge n\)&lt;/span&gt;. In fact, for any n buckets you can find the poisoned one with a minimum of &lt;span class=&#34;math inline&#34;&gt;\(x = \lceil log_2(n) \rceil\)&lt;/span&gt; pigs (ie: the smallest x to satisfy &lt;span class=&#34;math inline&#34;&gt;\(2^x \ge n\)&lt;/span&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;four-rounds-of-testing&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Four Rounds of Testing&lt;/h2&gt;
+&lt;p&gt;Now we will consider the original question and allow &lt;strong&gt;four rounds&lt;/strong&gt; per the original requirement. Let’s start with just a generalized number of buckets, n. Since we have 4 tries, we can start by cutting down the number of buckets that we have to test in detail as much as possible. We can do this by dividing the bottles into groups and test each group with just one pig to locate the group that contains the poison.&lt;/p&gt;
+&lt;p&gt;If we have x pigs in total, we can divide n buckets into (x + 1) groups (if no pigs die then it must be the group that isn’t tested). Since the question asks for a minimum x pigs that guarantees finding the poision, we need to be conservative here and consider only the worst case scenario where we lose as many pigs as possible. So in this first division we lose one pig and have (x - 1) pigs left.&lt;/p&gt;
+&lt;p&gt;We then repeat the process twice. Since we have lost a pig already, we can only divide into x groups now (and lose another pig in the process). Finally on the third division we have (x - 1) groups and lose one last pig. We now have (x - 3) pigs left and a group with approximately &lt;span class=&#34;math inline&#34;&gt;\(\frac{n}{(x + 1)(x)(x - 1)}\)&lt;/span&gt; buckets. These are the buckets that we must test in detail on the last round using the binary state combinations of the (x - 3) pigs we have left in order to locate the poisoned bucket (at most &lt;span class=&#34;math inline&#34;&gt;\(2^{x - 3}\)&lt;/span&gt; buckets).&lt;/p&gt;
+&lt;p&gt;Working backward, we can see that the minimum amount of pigs we need is the smallest x that satisfies the following:&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:maxbuckets&#34;&gt;\[\begin{equation}
+2^{x-3}(x+1)(x)(x-1) \ge n
+\tag{1}
+\end{equation}\]&lt;/span&gt;
+&lt;p&gt;where x = number of pigs and n = number of buckets.&lt;/p&gt;
+&lt;p&gt;Note that in order for eq &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; to make sense we must start with at least 4 pigs (otherwise you will run out of pigs in the worst case scenario). This means this particular method is only justified for a total number of buckets exceeding 120. For buckets less than 120 you may want to reduce the number of rounds dedicated to dividing buckets into groups and avoid losing pigs unnecessarily.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;back-to-the-original&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Back to the Original&lt;/h2&gt;
+&lt;p&gt;With n = 1000, the minimum x that satisfies equation &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; is x = 6. In fact, with 6 pigs you can test up to a whopping &lt;strong&gt;&lt;em&gt;1680&lt;/em&gt;&lt;/strong&gt; buckets in an hour!&lt;/p&gt;
+&lt;div id=&#34;follow-up&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;Follow Up&lt;/h3&gt;
+&lt;p&gt;If pigs die within m minutes and we are given p minutes, then the number of test rounds is &lt;span class=&#34;math inline&#34;&gt;\(\lfloor{p}{m}\rfloor\)&lt;/span&gt;. Out of these, &lt;span class=&#34;math inline&#34;&gt;\(\lfloor{p}{m}\rfloor - 1\)&lt;/span&gt; rounds are used to divide buckets into groups and zoom in on the general location of the poison. Equation &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; can then be generalized to&lt;/p&gt;
+&lt;span class=&#34;math display&#34; id=&#34;eq:generalized&#34;&gt;\[\begin{equation}
+2^{x- \lfloor \frac{p}{m} \rfloor + 1}\prod_{i = 1}^{\lfloor \frac{p}{m} \rfloor - 1} (x + 2 - i) \ge n
+\tag{2}
+\end{equation}\]&lt;/span&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;digression&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Digression&lt;/h1&gt;
+&lt;p&gt;There is an interesting suggestion proposed by &lt;a href=&#34;https://discuss.leetcode.com/topic/67666/another-explanation-and-solution&#34;&gt;StephanPochmann&lt;/a&gt;. The suggestion essentially advocates arranging the buckets into 5x5 square matrices and use two pigs each to find the (x, y) coordinates of the poisoned bucket within four rounds of testing. If there are more than 25 buckets in total you can divide the buckets into units of 5x5 matrices and assign two pigs for each. It further postulates an extension of using 5 x 5 x 5 cubes and 3 pigs per cube. However, there are some problems:&lt;/p&gt;
+&lt;ol style=&#34;list-style-type: decimal&#34;&gt;
+&lt;li&gt;&lt;p&gt;While the method using square matrices is possible, the suggestion of further optimization using cubes is not. Suppose there is exactly one 5 x 5 x 5 cube of buckets and 3 pigs total for the 3 axis. Each pig can drink a max of 5 buckets on their respective axis. With 3 pigs you get 15 buckets tested per round. After 4 rounded you have only tested 15 x 4 = 60 buckets. That leaves 65 buckets untested in each cube! If you want guaranteed results you can only leave a maximum of &lt;strong&gt;1&lt;/strong&gt; bucket untested out of all of the cubes.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If the total number of buckets requires more than one matrix units you cannot systematically leave one bucket untested in each matrix because again, only one untested buckets out of all of the matrices combined is allowed for guaranteed result. Therefore in the cases where you have more than one matrix unit each matrix can only be 4 x 4 with the exception of a single 5 x 5 matrix at the beginning.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Assuming p = 60 and m = 15 as per the original specification, since the number of buckets tested using the binary state method grows exponentially by the number of pigs, it quickly overtakes the matrix method in terms of efficiency as the number of buckets increases. Specifically, The matrix method can test 16 buckets using two pigs. Any n &amp;gt; 16 requires you to divide them into matrix groups. This means x is roughly &lt;span class=&#34;math inline&#34;&gt;\(2\frac{n}{16}\)&lt;/span&gt; -&amp;gt; &lt;span class=&#34;math inline&#34;&gt;\(O(n)\)&lt;/span&gt;. In comparison, the binary method is actually better than &lt;span class=&#34;math inline&#34;&gt;\(O(log(n))\)&lt;/span&gt; (see &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt;).&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>Can Car Transmission Affect Fuel Efficiency?</title>
