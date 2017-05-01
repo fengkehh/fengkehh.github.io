@@ -77,7 +77,7 @@
 &lt;p&gt;P2: &lt;code&gt;E, F, G, H, I, J, K, L&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;P3: &lt;code&gt;A, B, E, F, I, J, M, N&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;P4: &lt;code&gt;B, C, F, G, J, K, N, O&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;Np Pigs: &lt;code&gt;P&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;No Pigs: &lt;code&gt;P&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Here is a graphical representation of the above division of buckets to each pig:&lt;/p&gt;
 &lt;div class=&#34;figure&#34;&gt;
 &lt;img src=&#34;../../img/poor_pigs.png&#34; /&gt;
