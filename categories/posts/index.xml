@@ -37,13 +37,18 @@
 &lt;div id=&#34;introduction&#34; class=&#34;section level1&#34;&gt;
 &lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;This is an interesting problem I ran across on &lt;a href=&#34;https://leetcode.com/problems/poor-pigs/#/description&#34;&gt;leetcode.com&lt;/a&gt;. I have included the description of it below.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.
-
-Answer this question, and write an algorithm for the follow-up general case.
-
-Follow-up:
-
-If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the &amp;quot;poison&amp;quot; bucket within p minutes? There is exact one bucket with poison.&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There are 1000 buckets, one and only one of them contains poison, the rest are filled with water. They all look the same. If a pig drinks that poison it will die within 15 minutes. What is the minimum amount of pigs you need to figure out which bucket contains the poison within one hour.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Answer this question, and write an algorithm for the follow-up general case.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Follow-up:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If there are n buckets and a pig drinking poison will die within m minutes, how many pigs (x) you need to figure out the “poison” bucket within p minutes? There is exact one bucket with poison.&lt;/p&gt;
+&lt;/blockquote&gt;
 &lt;div id=&#34;additional-clarfications&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Additional Clarfications&lt;/h2&gt;
 &lt;p&gt;I am going to work with the following details:&lt;/p&gt;
@@ -57,8 +62,8 @@ If there are n buckets and a pig drinking poison will die within m minutes, how 
 &lt;h1&gt;The Binary State Method&lt;/h1&gt;
 &lt;div id=&#34;one-round-of-testing&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;One Round of Testing&lt;/h2&gt;
-&lt;p&gt;Disclaimer: I didn’t come up with this entirely by myself. Credit should also go to [Ting Zheng] (&lt;a href=&#34;https://www.linkedin.com/in/ting-zheng-97a2267b/&#34; class=&#34;uri&#34;&gt;https://www.linkedin.com/in/ting-zheng-97a2267b/&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;First let’s start with a simplified case with a total number of n = 4 buckets and &lt;strong&gt;&lt;em&gt;only one round of testing&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Disclaimer: I didn’t come up with this entirely by myself. Credit should also go to &lt;a href=&#34;https://www.linkedin.com/in/ting-zheng-97a2267b/&#34;&gt;Ting Zheng&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;First let’s start with a simplified case with a total number of n = 4 buckets and &lt;strong&gt;only one round of testing&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Buckets: &lt;code&gt;A, B, C, D&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;Now take &lt;strong&gt;x = 2&lt;/strong&gt; pigs and divide the buckets as follow:&lt;/p&gt;
 &lt;p&gt;P1: &lt;code&gt;A, B&lt;/code&gt;&lt;/p&gt;
@@ -97,7 +102,7 @@ If there are n buckets and a pig drinking poison will die within m minutes, how 
 &lt;p&gt;With n = 1000, the minimum x that satisfies equation &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; is x = 6. In fact, with 6 pigs you can test up to a whopping &lt;strong&gt;&lt;em&gt;1680&lt;/em&gt;&lt;/strong&gt; buckets in an hour!&lt;/p&gt;
 &lt;div id=&#34;follow-up&#34; class=&#34;section level3&#34;&gt;
 &lt;h3&gt;Follow Up&lt;/h3&gt;
-&lt;p&gt;If pigs die within m minutes and we are given p minutes, then the number of test rounds is &lt;span class=&#34;math inline&#34;&gt;\(\lfloor{p}{m}\rfloor\)&lt;/span&gt;. Out of these, &lt;span class=&#34;math inline&#34;&gt;\(\lfloor{p}{m}\rfloor - 1\)&lt;/span&gt; rounds are used to divide buckets into groups and zoom in on the general location of the poison. Equation &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; can then be generalized to&lt;/p&gt;
+&lt;p&gt;If pigs die within m minutes and we are given p minutes, then the number of test rounds is &lt;span class=&#34;math inline&#34;&gt;\(\lfloor\frac{p}{m}\rfloor\)&lt;/span&gt;. Out of these, &lt;span class=&#34;math inline&#34;&gt;\(\lfloor\frac{p}{m}\rfloor - 1\)&lt;/span&gt; rounds are used to divide buckets into groups and zoom in on the general location of the poison. Equation &lt;a href=&#34;#eq:maxbuckets&#34;&gt;(1)&lt;/a&gt; can then be generalized to&lt;/p&gt;
 &lt;span class=&#34;math display&#34; id=&#34;eq:generalized&#34;&gt;\[\begin{equation}
 2^{x- \lfloor \frac{p}{m} \rfloor + 1}\prod_{i = 1}^{\lfloor \frac{p}{m} \rfloor - 1} (x + 2 - i) \ge n
 \tag{2}
