@@ -126,27 +126,27 @@ conMat1&lt;/code&gt;&lt;/pre&gt;
 ## Prediction tail head
 ##       tail  305    3
 ##       head    0  293
-##                                          
-##                Accuracy : 0.995          
-##                  95% CI : (0.9855, 0.999)
-##     No Information Rate : 0.5075         
-##     P-Value [Acc &amp;gt; NIR] : &amp;lt;2e-16         
-##                                          
-##                   Kappa : 0.99           
-##  Mcnemar&amp;#39;s Test P-Value : 0.2482         
-##                                          
-##             Sensitivity : 1.0000         
-##             Specificity : 0.9899         
-##          Pos Pred Value : 0.9903         
-##          Neg Pred Value : 1.0000         
-##              Prevalence : 0.5075         
-##          Detection Rate : 0.5075         
-##    Detection Prevalence : 0.5125         
-##       Balanced Accuracy : 0.9949         
-##                                          
-##        &amp;#39;Positive&amp;#39; Class : tail           
+##                                         
+##                Accuracy : 0.995         
+##                  95% CI : (0.985, 0.999)
+##     No Information Rate : 0.507         
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt;2e-16        
+##                                         
+##                   Kappa : 0.99          
+##  Mcnemar&amp;#39;s Test P-Value : 0.248         
+##                                         
+##             Sensitivity : 1.000         
+##             Specificity : 0.990         
+##          Pos Pred Value : 0.990         
+##          Neg Pred Value : 1.000         
+##              Prevalence : 0.507         
+##          Detection Rate : 0.507         
+##    Detection Prevalence : 0.512         
+##       Balanced Accuracy : 0.995         
+##                                         
+##        &amp;#39;Positive&amp;#39; Class : tail          
 ## &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;An accuracy of 0.9950083. That is extremely high. Should we choose this one as our final model? Let’s build a couple other models first.&lt;/p&gt;
+&lt;p&gt;An accuracy of 0.995. That is extremely high. Should we choose this one as our final model? Let’s build a couple other models first.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;model-2-include-all-features&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Model 2: Include all features!&lt;/h2&gt;
@@ -168,27 +168,27 @@ conMat2&lt;/code&gt;&lt;/pre&gt;
 ## Prediction tail head
 ##       tail  248   76
 ##       head   57  220
-##                                           
-##                Accuracy : 0.7787          
-##                  95% CI : (0.7434, 0.8113)
-##     No Information Rate : 0.5075          
-##     P-Value [Acc &amp;gt; NIR] : &amp;lt;2e-16          
-##                                           
-##                   Kappa : 0.5569          
-##  Mcnemar&amp;#39;s Test P-Value : 0.1186          
-##                                           
-##             Sensitivity : 0.8131          
-##             Specificity : 0.7432          
-##          Pos Pred Value : 0.7654          
-##          Neg Pred Value : 0.7942          
-##              Prevalence : 0.5075          
-##          Detection Rate : 0.4126          
-##    Detection Prevalence : 0.5391          
-##       Balanced Accuracy : 0.7782          
-##                                           
-##        &amp;#39;Positive&amp;#39; Class : tail            
+##                                         
+##                Accuracy : 0.779         
+##                  95% CI : (0.743, 0.811)
+##     No Information Rate : 0.507         
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt;2e-16        
+##                                         
+##                   Kappa : 0.557         
+##  Mcnemar&amp;#39;s Test P-Value : 0.119         
+##                                         
+##             Sensitivity : 0.813         
+##             Specificity : 0.743         
+##          Pos Pred Value : 0.765         
+##          Neg Pred Value : 0.794         
+##              Prevalence : 0.507         
+##          Detection Rate : 0.413         
+##    Detection Prevalence : 0.539         
+##       Balanced Accuracy : 0.778         
+##                                         
+##        &amp;#39;Positive&amp;#39; Class : tail          
 ## &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;With an accuracy of 0.7787022 it seems to be markedly worse than model 1…or is it? At the very least it still has quite a bit of predictive power since it’s accuracy is significantly higher than the &lt;em&gt;No Information Rate&lt;/em&gt;. Let’s build one final model.&lt;/p&gt;
+&lt;p&gt;With an accuracy of 0.7787 it seems to be markedly worse than model 1…or is it? At the very least it still has quite a bit of predictive power since it’s accuracy is significantly higher than the &lt;em&gt;No Information Rate&lt;/em&gt;. Let’s build one final model.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;model-3-simple-structure-with-only-the-relevant-feature.&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Model 3: Simple structure with only the relevant feature.&lt;/h2&gt;
@@ -208,27 +208,27 @@ conMat3&lt;/code&gt;&lt;/pre&gt;
 ## Prediction tail head
 ##       tail  262  123
 ##       head   43  173
-##                                           
-##                Accuracy : 0.7238          
-##                  95% CI : (0.6862, 0.7592)
-##     No Information Rate : 0.5075          
-##     P-Value [Acc &amp;gt; NIR] : &amp;lt; 2.2e-16       
-##                                           
-##                   Kappa : 0.4453          
-##  Mcnemar&amp;#39;s Test P-Value : 8.701e-10       
-##                                           
-##             Sensitivity : 0.8590          
-##             Specificity : 0.5845          
-##          Pos Pred Value : 0.6805          
-##          Neg Pred Value : 0.8009          
-##              Prevalence : 0.5075          
-##          Detection Rate : 0.4359          
-##    Detection Prevalence : 0.6406          
-##       Balanced Accuracy : 0.7217          
-##                                           
-##        &amp;#39;Positive&amp;#39; Class : tail            
+##                                         
+##                Accuracy : 0.724         
+##                  95% CI : (0.686, 0.759)
+##     No Information Rate : 0.507         
+##     P-Value [Acc &amp;gt; NIR] : &amp;lt; 2e-16       
+##                                         
+##                   Kappa : 0.445         
+##  Mcnemar&amp;#39;s Test P-Value : 8.7e-10       
+##                                         
+##             Sensitivity : 0.859         
+##             Specificity : 0.584         
+##          Pos Pred Value : 0.681         
+##          Neg Pred Value : 0.801         
+##              Prevalence : 0.507         
+##          Detection Rate : 0.436         
+##    Detection Prevalence : 0.641         
+##       Balanced Accuracy : 0.722         
+##                                         
+##        &amp;#39;Positive&amp;#39; Class : tail          
 ## &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Uh oh. With an accuracy of 0.7237937 this is by far the worst model we have built! I guess it’s clear we should use the big tree from model 1 as our final model, right? Oh wait, we split the data into training and validation set! Since the models are all built on the training set they have no ideas what the validation set looks like. If we feed the models the validation set we can make actual predictions with them and get a sense on its predictive accuracy. How exciting! Let’s do it.&lt;/p&gt;
+&lt;p&gt;Uh oh. With an accuracy of 0.7238 this is by far the worst model we have built! I guess it’s clear we should use the big tree from model 1 as our final model, right? Oh wait, we split the data into training and validation set! Since the models are all built on the training set they have no ideas what the validation set looks like. If we feed the models the validation set we can make actual predictions with them and get a sense on its predictive accuracy. How exciting! Let’s do it.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div id=&#34;performance-evaluation-validation&#34; class=&#34;section level2&#34;&gt;
 &lt;h2&gt;Performance Evaluation (Validation)&lt;/h2&gt;
@@ -255,15 +255,15 @@ kable(df)&lt;/code&gt;&lt;/pre&gt;
 &lt;tbody&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Model 1&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.6065163&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6065&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;even&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Model 2&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.6691729&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6692&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr class=&#34;odd&#34;&gt;
 &lt;td align=&#34;left&#34;&gt;Model 3&lt;/td&gt;
-&lt;td align=&#34;right&#34;&gt;0.6791980&lt;/td&gt;
+&lt;td align=&#34;right&#34;&gt;0.6792&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
