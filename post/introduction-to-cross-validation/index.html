@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction to Cross Validation</title>
+<meta name="description" content="Keh-Harng Feng&#39;s Personal blog about Data and Statistics">
+<meta name="generator" content="Hugo 0.19" />
+<meta property="og:title" content="Introduction to Cross Validation" />
+<meta property="og:description" content="Basic Idea: Keep Some Data Out of ReachCross ValidationApplication Examplelibrary(&#39;knitr&#39;)opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE, tidy = TRUE)options(digits = 4)This is a continuation of my article on overfitting. If you haven’t read it, I recommend you to start there first.
+As I mentioned, the biggest problem overfitting presents to a modeler is it causes us to think the model performance is better than it actually is." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://fengkehh.github.io/post/introduction-to-cross-validation/" />
+
+
+
+<meta property="article:published_time" content="2017-07-03T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2017-07-03T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,700" type="text/css" media="all" />
+<link rel="stylesheet" href="https://fengkehh.github.io/css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="../../css/style.css" type="text/css" media="all" />
+<link rel="stylesheet" type='text/css' href="css/style.css" type="text/css" media="all" />
+<script type="text/javascript" src="https://fengkehh.github.io/js/scripts.js"></script>
+
+<link rel="stylesheet" href="https://fengkehh.github.io/css/agate.css">
+<script src="https://fengkehh.github.io/js/highlight.pack.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+</head>
+<body class="body body-right-sidebar mobile" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+	<div class="container container-outer">
+		<header class="header" itemscope="itemscope" itemtype="http://schema.org/WPHeader">
+			<div class="container container-inner clearfix">
+				<div class="logo" role="banner" itemscope="itemscope" itemtype="http://schema.org/Brand">
+					<a class="logo__link" href="https://fengkehh.github.io/" title="A Song of Numbers and Graphs" rel="home">
+						<h1 class="logo__title">A Song of Numbers and Graphs</h1>
+						<h2 class="logo__tagline">A Blog about Data Analysis</h2>
+					</a>
+				</div>
+			</div>
+			<nav class="menu" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<ul class="menu__list">
+		<li class="menu__item "><a class="menu__link" href="../../categories/posts/">BLOG POSTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="../../categories/projects/">PROJECTS</a></li>
+		<li class="menu__item "><a class="menu__link" href="../../about/">ABOUT THIS BLOG</a></li>
+	</ul>
+</nav>
+		</header>
+		<div class="wrapper clearfix">
+
+<div class="main-content content" role="main" itemprop="mainContentOfPage">
+	<article class="post">
+		<header class="post__header clearfix">
+			<h1 class="post__title">Introduction to Cross Validation</h1>
+			<p class="post__meta meta">
+				<svg class="icon icon-time" height="14" viewBox="0 0 16 16" width="14" xmlns="http://www.w3.org/2000/svg"><path d="m8-.0000003c-4.4 0-8 3.6-8 8 0 4.4000003 3.6 8.0000003 8 8.0000003 4.4 0 8-3.6 8-8.0000003 0-4.4-3.6-8-8-8zm0 14.4000003c-3.52 0-6.4-2.88-6.4-6.4000003 0-3.52 2.88-6.4 6.4-6.4 3.52 0 6.4 2.88 6.4 6.4 0 3.5200003-2.88 6.4000003-6.4 6.4000003zm.4-10.4000003h-1.2v4.8l4.16 2.5600003.64-1.04-3.6-2.1600003z"/></svg>
+				<time class="post__meta-date" datetime="2017-07-03 00:00:00 &#43;0000 UTC">July 03, 2017</time>
+			</p>
+		</header>
+		
+<div class="post__tags tags clearfix">
+	<svg class="icon icon-tag" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="m4.73135 3.3795002q0-.5597-.39604-.9557-.39604-.3961-.95577-.3961-.55974 0-.95578.3961-.39604.396-.39604.9557 0 .5598.39604.9558.39604.3961.95578.3961.55973 0 .95577-.3961.39604-.396.39604-.9558zm11.26865 6.0832q0 .5596998-.39076.9504998l-5.18548 5.196q-.41188.3908-.9610504.3908-.55974 0-.9505-.3908l-7.5511496-7.5616998q-.40132-.3907-.68119-1.0666-.27987-.6759-.27987-1.2357v-4.3934q0-.54920004.40132-.95050004.40132-.4013.9505-.4013h4.39339q.55974 0 1.23565.2799.67591.2798 1.07723.6812l7.55115 7.54060004q.39076.4118.39076.961z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link" href="../../tags/r/" rel="tag">R</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/intermediate/" rel="tag">Intermediate</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/cross-validation/" rel="tag">Cross Validation</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/machine-learning/" rel="tag">Machine Learning</a></li>
+		<li class="tags__item"><a class="tags__link" href="../../tags/tree/" rel="tag">Tree</a></li>
+	</ul>
+</div>
+
+		<div class="post__content clearfix">
+			<div id="TOC">
+<ul>
+<li><a href="#basic-idea-keep-some-data-out-of-reach">Basic Idea: Keep Some Data Out of Reach</a></li>
+<li><a href="#cross-validation">Cross Validation</a></li>
+<li><a href="#application-example">Application Example</a></li>
+</ul>
+</div>
+<pre class="r"><code>library(&#39;knitr&#39;)
+
+opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE, tidy = TRUE)
+options(digits = 4)</code></pre>
+<p>This is a continuation of my article on <a href="https://fengkehh.github.io/post/2017-06-30-overfitting/">overfitting</a>. If you haven’t read it, I recommend you to start there first.</p>
+<p>As I mentioned, the biggest problem overfitting presents to a modeler is it causes us to think the model performance is better than it actually is. In this post I am going to introduce you to a resampling method that can produce accurate model performance estimation - <strong>cross validation</strong>.</p>
+<div id="basic-idea-keep-some-data-out-of-reach" class="section level1">
+<h1>Basic Idea: Keep Some Data Out of Reach</h1>
+<p>So if you recall, <a href="https://fengkehh.github.io/post/2017-06-30-overfitting/#a-simplified-simulation">in the beginning of the simulation</a> I splitted the data set into a training set and a validation set. The models were trained on the training set and they all produced inflated accuracies on those data points. However, when the models made predictions on the validation set their model accuracies all dropped significantly, particularly the ones that were overfitting. I was only able to get a sense of the real model performance by looking at the validation set accuracies and conclude that the simplest tree using the least amount of feature was in fact the best model.</p>
+<p>This is called the “hold-out” method. A portion of the data is held out of reach of the model training process. This portion of data is only used for the models to make predictions. The performance evaluation you get by letting the model make prediction on the held-out portion of the data is an estimation of the <em>out-of-sample</em> performance. It’s out-of-sample because the model does not construct or tweak its structures/parameters using these datapoints. It’s an estimation because the portion of data held out is only a small subset of all the other possibilities that you would like to make a prediction on.</p>
+<p><img src="../../img/training-validation.png" /><!-- --></p>
+<p>There is a bit of problem though.</p>
+<ol style="list-style-type: decimal">
+<li><p>The model you have is only built on the training data alone. The out-of-sample performance estimate you have is solely evaluated using the validation set. What if the data isn’t splitted perfectly? Let’s say we are looking at fitness data. By chance, most of the datapoints in the training set are from female participants and most of the datapoints in the validation set are from male participants. Can we still say that the model we built generalizes well to the entire population which has roughly equal amount of female and male? Can we say the performance estimation using a validation set containing only male is unbiased? The answer to both questions is of course, <strong>no</strong>!</p></li>
+<li><p>Let’s say you measure your model performance on the validation set and want to tweak your model further. Like I mentioned <a href="https://fengkehh.github.io/post/2017-06-30-overfitting/#discussion">last time</a>, doing so allows information from the validation set to leak out to the training process and effectively makes your model start training on the validation set. This can cause your model to overfit on the validation set and once again produce inflated performance estimation.</p></li>
+</ol>
+<p>Let us address point 1 first.</p>
+</div>
+<div id="cross-validation" class="section level1">
+<h1>Cross Validation</h1>
+<p>The basic idea of cross validation is an extension of the hold out method.</p>
+<ol style="list-style-type: decimal">
+<li><p>Hold out a portion of the data to be the validation set. This is called a <strong>validation fold</strong> or sometimes just a <strong>fold</strong>. The rest of the data is set to be the training set. Train model on the training set and evaluate on the validation set/fold as usual.</p></li>
+<li><p>Choose a different portion of the data to be the validation set. To ensure no information is leaking over the new fold cannot overlap with the old fold (or any other folds for that matter). The rest is the training set. Train and evaluate.</p></li>
+<li><p>Iterate steps 1 and 2 <strong>k</strong> times. This ultimately results in k folds and k entries of performance evaluations. Their average is the out-of-sample performance estimate from <strong>k-fold</strong> cross validation.</p></li>
+</ol>
+<p>Here’s a picture visualizing a simple 2-fold cross validation.</p>
+<p><img src="../../img/2-fold_CV.png" /><!-- --></p>
+<p>Notice that in the end ALL of the data points are used to train a model and ALL of them are also used for validation. The key is to recognize that</p>
+<ol style="list-style-type: decimal">
+<li>Two models are built. Both with the same hyper-parameters but different training/validation sets.</li>
+<li>Whenever a datapoint is used to build a model, it is NOT used for validation of the said model. Vice versa.</li>
+<li>There is no overlap between the validation folds (the training sets can have overlaps although in our 2-fold case there’s no overlap there, either).</li>
+</ol>
+<p>The final performance estimate is an average of the model performance evaluations on the validation folds. This is an attempt to decrease the effect of hidden structures that aren’t perfectly balanced out from the data split.</p>
+</div>
+<div id="application-example" class="section level1">
+<h1>Application Example</h1>
+<p>Let’s use the simulation data and the models we had last time to demonstrate cross-validation. Here’s a reminder for what the data represents <a href="https://fengkehh.github.io/post/2017-06-30-overfitting/#a-simplified-simulation">here</a>. With cross-validation we actually don’t need to split the data into training and validation set.</p>
+<pre class="r"><code># Load all required libraries.
+library(&quot;caret&quot;)
+library(&quot;rpart&quot;)
+library(&quot;rpart.plot&quot;)
+
+set.seed(123)
+toss &lt;- rbinom(1000, 1, 0.5)
+inst &lt;- rnorm(1000) + toss
+volt &lt;- rnorm(1000)
+water &lt;- rnorm(1000)
+
+toss_fac &lt;- factor(toss, labels = c(&quot;tail&quot;, &quot;head&quot;))
+
+data &lt;- data.frame(inst = inst, volt = volt, water = water, response = toss_fac)</code></pre>
+<p>Recall that <code>tree1</code> overfits the data by being structurally complex. <code>tree2</code> overfits by using too many features and <code>tree3</code> tries to use a relatively simple structure and only the relevant feature. I will now estimate their model performances using 10-fold cross validation instead of the actual validation set. The code below generates a vector named <code>folds</code> with the same size of the training data. The vector contains integers ranging from 1 to 10 randomly dispersed throughout with each integer occuring 100 times in total. What it represents is the validation fold the corresponding datapoint resides in. For example, if the 10th slot of the vector is 5, then the 10th datapoint is inside the 5th validation fold (and only the 5th).</p>
+<pre class="r"><code>folds &lt;- rep(0, nrow(data))
+k &lt;- 10
+n &lt;- nrow(data)
+fold_size &lt;- floor(n/k)
+# index of data points that haven&#39;t been assigned a fold
+index_left &lt;- 1:n
+# Random number seed for reproducibility
+seed = 123
+
+for (i in 1:k) {
+    if (i &lt; k) {
+        set.seed(seed)
+        selected &lt;- sample(1:length(index_left), fold_size)
+        folds[index_left[selected]] &lt;- i
+        index_left &lt;- index_left[-selected]
+        
+    } else {
+        # Last fold. Assign everything left here.
+        folds[index_left] &lt;- k
+    }
+}</code></pre>
+<p>I will now write a function to facillitate training the three types of tree model on each of the training set. Model performance is evaluated on each of the validation fold and the final performance is the average from all 10 folds. With three types of models I have to train a total of 3*10 = 30 models.</p>
+<pre class="r"><code># Function to train tree models and evaluate model performance using 10-fold
+# CV Arguments: data: data to train the model on control: control objects
+# that contains hyper-parameters for rpart.  folds: cross validation folds.
+# Length must be the number of rows in data.  Returns: Model performance
+# from each cross validation fold. Average returned vector to obtain final
+# performance estimate!
+tree_cv &lt;- function(formula, data, control, folds) {
+    k &lt;- max(folds)
+    n &lt;- nrow(data)
+    index &lt;- 1:n
+    accuracies &lt;- rep(0, k)
+    
+    for (i in 1:k) {
+        inFold &lt;- index[folds == i]
+        data.infold &lt;- data[inFold, ]
+        data.outside &lt;- data[-inFold, ]
+        
+        # Train model on data outside of fold, predict on data in the fold, compute
+        # accuracy.
+        set.seed(1)
+        model &lt;- rpart(formula, data.outside, control = control)
+        
+        pred &lt;- predict(model, newdata = data.infold, type = &quot;class&quot;)
+        
+        accuracies[i] &lt;- sum(pred == data.infold[, all.vars(formula)[1]])/nrow(data.infold)
+    }
+    
+    return(accuracies)
+}
+
+# Tree 1 Hyper-parameters
+treeCon.over &lt;- rpart.control(minsplit = 2, minbucket = 1, cp = 0, xval = 10)
+# Tree 2 &amp; 3 hyper-parameters
+treeCon &lt;- rpart.control(minsplit = 10, minbucket = 3, cp = 0.01, xval = 10)
+
+tree1_accuracies &lt;- tree_cv(response ~ inst, data = data, treeCon.over, folds)
+tree2_accuracies &lt;- tree_cv(response ~ inst + volt + water, data = data, treeCon, 
+    folds)
+tree3_accuracies &lt;- tree_cv(response ~ inst, data = data, treeCon, folds)</code></pre>
+<p>Here’s a table showing the final estimated model accuracies from cross validations of the three models compared to their training set accuracies and validation set accuracies obtained last time:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Model.Type</th>
+<th align="right">Training.Set.Accuracy</th>
+<th align="right">Validation.Set.Accuracy</th>
+<th align="right">CV.Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Complex Structure Overfit</td>
+<td align="right">1.0000</td>
+<td align="right">0.6466</td>
+<td align="right">0.636</td>
+</tr>
+<tr class="even">
+<td align="left">Too Many Features</td>
+<td align="right">0.7504</td>
+<td align="right">0.6591</td>
+<td align="right">0.695</td>
+</tr>
+<tr class="odd">
+<td align="left">Balanced</td>
+<td align="right">0.7105</td>
+<td align="right">0.6817</td>
+<td align="right">0.699</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, training set accuracies are higher for all three models compared to both validation set accuracies and CV estimated accuracies. This is particularly obvious for the first model. The CV estimated accuracies are in general much closer to the model performance on the validation set and they correctly reflect the true order of performance between the three models.</p>
+<p>You may have noticed there is a pattern for the gap between training set accuracies and their corresponding CV estimated accuracies: <img src="../../post/2017-07-03-introduction-to-cross-validation_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Yep, the higher amount of overfitting a model has the larger the gap is between its training set performance and CV estimated performance. This is perhaps not a surprise - during cross validation the model is always assessed using unseen data in the validation fold and the averaging step smoothes over the variation in model accuracy assessments. Thus the final assessment should be closer to the true performance and lower than the inflated performance a model has on its training set if it is overfitting. This can be used as a gauge to how much overfitting your model exhibits.</p>
+<p>This concludes the introduction to cross validation. There are more advanced things you can do with cross-validation, such as tuning model hyper-parameters and producing accurate performance assessments at the same time using nesting and subtleties like how to choose an effective k value that I did not cover. There are also other resampling methods for producing accurate performance estimates. Some are actually considered to be superior, such as the .632 bootstrap method. They shall be left for another time.</p>
+</div>
+
+		</div>
+	</article>
+	
+<div class="authorbox clearfix">
+	<figure class="authorbox__avatar">
+		<img alt="Keh-Harng Feng avatar" src="https://fengkehh.github.io/img/avatar.png" class="avatar" height="90" width="90">
+	</figure>
+	<div class="authorbox__header">
+		<span class="authorbox__name">About Keh-Harng Feng</span>
+	</div>
+	<div class="authorbox__description">
+		Keh-Harng Feng is aspiring to become a data scientist. He graduated from York University with a MSc in Physics and University of Toronto with a BSc in Computer Science and Physics.
+	</div>
+</div>
+	
+<nav class="post-nav row clearfix" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+	<div class="post-nav__item post-nav__item--prev col-1-2">
+		<a class="post-nav__link" href="https://fengkehh.github.io/post/2017-06-30-overfitting/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">A Demonstration of Overfitting</p></a>
+	</div>
+</nav>
+
+	
+<div class="comments">
+	<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'datakhf';
+    var disqus_identifier = 'https:\/\/fengkehh.github.io\/post\/introduction-to-cross-validation\/';
+    var disqus_title = 'Introduction to Cross Validation';
+    var disqus_url = 'https:\/\/fengkehh.github.io\/post\/introduction-to-cross-validation\/';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+</div>
+
+<aside class="sidebar" itemscope="itemscope" itemtype="http://schema.org/WPSideBar">
+	
+	
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="../../post/introduction-to-cross-validation/">Introduction to Cross Validation</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-06-30-overfitting/">A Demonstration of Overfitting</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-04-26-the-poor-pigs-problem/">The Poor Pigs Problem</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-30-can-car-transmission-affect-fuel-efficiency/">Can Car Transmission Affect Fuel Efficiency?</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-21-the-effects-of-vitamin-c-supplements-on-guinea-pig-odontoblast-lengths/">The Effects of Vitamin C Supplements on Guinea Pig Odontoblast Lengths</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-16-how-this-blog-is-made-part-ii/">Making A Blog Site with RStudio, R Markdown and Blogdown Part II</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-15-how-this-blog-is-made/">Making A Blog Site with RStudio, R Markdown and Blogdown Part I</a></li>
+			<li class="widget__item"><a class="widget__link" href="../../post/">Posts</a></li>
+		</ul>
+	</div>
+</div>
+	
+	
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/algorithm" title="algorithm">algorithm</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/anova" title="anova">anova</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/beginner" title="beginner">beginner</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/blogdown" title="blogdown">blogdown</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/bootstrap" title="bootstrap">bootstrap</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/cross-validation" title="cross-validation">cross-validation</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/github" title="github">github</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hugo" title="hugo">hugo</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hypothesis-test" title="hypothesis-test">hypothesis-test</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/intermediate" title="intermediate">intermediate</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/machine-learning" title="machine-learning">machine-learning</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/model-selection" title="model-selection">model-selection</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/multivariate-linear-regression" title="multivariate-linear-regression">multivariate-linear-regression</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/overfitting" title="overfitting">overfitting</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/puzzle" title="puzzle">puzzle</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/r" title="r">r</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/r-markdown" title="r-markdown">r-markdown</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/residual-analysis" title="residual-analysis">residual-analysis</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/statistical-inference" title="statistical-inference">statistical-inference</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/tree" title="tree">tree</a>
+	</div>
+</div>
+</aside>
+	</div>
+		<footer class="footer" itemscope="itemscope" itemtype="http://schema.org/WPFooter">
+			<div class="container container-inner">
+				<p class="footer__copyright">&copy; 2017 Keh-Harng Feng. Based on <a href="//wordpress.org/themes/mh-magazine-lite/" target="_blank" rel="nofollow noopener noreferrer">MH Magazine lite</a>.</p>
+			</div>
+		</footer>
+	</div>
+
+<script>
+	var navigation = responsiveNav(".menu", {
+		navClass: "menu--collapse",
+	});
+</script>
+<script type="text/x-mathjax-config">
+
+    MathJax.Hub.Config({
+
+      tex2jax: {
+
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+
+      }
+
+    });
+
+</script>
+
+<script type="text/javascript"
+
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+
+</script>
+
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-96579173-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+</html>

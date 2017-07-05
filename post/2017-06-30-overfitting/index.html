@@ -134,7 +134,8 @@ data &lt;- data.frame(inst = inst, volt = volt, water = water, response = toss_f
 <li>The deviation in <code>water</code> pressure of the house. Modeled as a standard normal distribution.</li>
 </ol>
 <p>The data is then split into training and vadliation sets.</p>
-<pre class="r"><code>inTrain &lt;- createDataPartition(toss_fac, p = 0.6, list = FALSE)
+<pre class="r"><code>set.seed(1)
+inTrain &lt;- createDataPartition(toss_fac, p = 0.6, list = FALSE)
 
 data.train &lt;- data[inTrain, ]
 data.validation &lt;- data[-inTrain, ]</code></pre>
@@ -163,29 +164,29 @@ conMat1</code></pre>
 ## 
 ##           Reference
 ## Prediction tail head
-##       tail  305    3
-##       head    0  293
-##                                         
-##                Accuracy : 0.995         
-##                  95% CI : (0.985, 0.999)
-##     No Information Rate : 0.507         
-##     P-Value [Acc &gt; NIR] : &lt;2e-16        
-##                                         
-##                   Kappa : 0.99          
-##  Mcnemar&#39;s Test P-Value : 0.248         
-##                                         
-##             Sensitivity : 1.000         
-##             Specificity : 0.990         
-##          Pos Pred Value : 0.990         
-##          Neg Pred Value : 1.000         
-##              Prevalence : 0.507         
-##          Detection Rate : 0.507         
-##    Detection Prevalence : 0.512         
-##       Balanced Accuracy : 0.995         
-##                                         
-##        &#39;Positive&#39; Class : tail          
+##       tail  305    0
+##       head    0  296
+##                                     
+##                Accuracy : 1         
+##                  95% CI : (0.994, 1)
+##     No Information Rate : 0.507     
+##     P-Value [Acc &gt; NIR] : &lt;2e-16    
+##                                     
+##                   Kappa : 1         
+##  Mcnemar&#39;s Test P-Value : NA        
+##                                     
+##             Sensitivity : 1.000     
+##             Specificity : 1.000     
+##          Pos Pred Value : 1.000     
+##          Neg Pred Value : 1.000     
+##              Prevalence : 0.507     
+##          Detection Rate : 0.507     
+##    Detection Prevalence : 0.507     
+##       Balanced Accuracy : 1.000     
+##                                     
+##        &#39;Positive&#39; Class : tail      
 ## </code></pre>
-<p>An accuracy of 0.995. That is extremely high. Should we choose this one as our final model? Let’s build a couple other models first.</p>
+<p>An accuracy of 1. That is extremely high. Should we choose this one as our final model? Let’s build a couple other models first.</p>
 </div>
 <div id="model-2-include-all-features" class="section level2">
 <h2>Model 2: Include all features!</h2>
@@ -205,29 +206,29 @@ conMat2</code></pre>
 ## 
 ##           Reference
 ## Prediction tail head
-##       tail  248   76
-##       head   57  220
+##       tail  213   58
+##       head   92  238
 ##                                         
-##                Accuracy : 0.779         
-##                  95% CI : (0.743, 0.811)
+##                Accuracy : 0.75          
+##                  95% CI : (0.714, 0.785)
 ##     No Information Rate : 0.507         
-##     P-Value [Acc &gt; NIR] : &lt;2e-16        
+##     P-Value [Acc &gt; NIR] : &lt; 2e-16       
 ##                                         
-##                   Kappa : 0.557         
-##  Mcnemar&#39;s Test P-Value : 0.119         
+##                   Kappa : 0.502         
+##  Mcnemar&#39;s Test P-Value : 0.00705       
 ##                                         
-##             Sensitivity : 0.813         
-##             Specificity : 0.743         
-##          Pos Pred Value : 0.765         
-##          Neg Pred Value : 0.794         
+##             Sensitivity : 0.698         
+##             Specificity : 0.804         
+##          Pos Pred Value : 0.786         
+##          Neg Pred Value : 0.721         
 ##              Prevalence : 0.507         
-##          Detection Rate : 0.413         
-##    Detection Prevalence : 0.539         
-##       Balanced Accuracy : 0.778         
+##          Detection Rate : 0.354         
+##    Detection Prevalence : 0.451         
+##       Balanced Accuracy : 0.751         
 ##                                         
 ##        &#39;Positive&#39; Class : tail          
 ## </code></pre>
-<p>With an accuracy of 0.7787 it seems to be markedly worse than model 1…or is it? At the very least it still has quite a bit of predictive power since it’s accuracy is significantly higher than the <em>No Information Rate</em>. Let’s build one final model.</p>
+<p>With an accuracy of 0.7504 it seems to be markedly worse than model 1…or is it? At the very least it still has quite a bit of predictive power since it’s accuracy is significantly higher than the <em>No Information Rate</em>. Let’s build one final model.</p>
 </div>
 <div id="model-3-simple-structure-with-only-the-relevant-feature." class="section level2">
 <h2>Model 3: Simple structure with only the relevant feature.</h2>
@@ -245,29 +246,29 @@ conMat3</code></pre>
 ## 
 ##           Reference
 ## Prediction tail head
-##       tail  262  123
-##       head   43  173
+##       tail  231  100
+##       head   74  196
 ##                                         
-##                Accuracy : 0.724         
-##                  95% CI : (0.686, 0.759)
+##                Accuracy : 0.71          
+##                  95% CI : (0.672, 0.746)
 ##     No Information Rate : 0.507         
-##     P-Value [Acc &gt; NIR] : &lt; 2e-16       
+##     P-Value [Acc &gt; NIR] : &lt;2e-16        
 ##                                         
-##                   Kappa : 0.445         
-##  Mcnemar&#39;s Test P-Value : 8.7e-10       
+##                   Kappa : 0.42          
+##  Mcnemar&#39;s Test P-Value : 0.0581        
 ##                                         
-##             Sensitivity : 0.859         
-##             Specificity : 0.584         
-##          Pos Pred Value : 0.681         
-##          Neg Pred Value : 0.801         
+##             Sensitivity : 0.757         
+##             Specificity : 0.662         
+##          Pos Pred Value : 0.698         
+##          Neg Pred Value : 0.726         
 ##              Prevalence : 0.507         
-##          Detection Rate : 0.436         
-##    Detection Prevalence : 0.641         
-##       Balanced Accuracy : 0.722         
+##          Detection Rate : 0.384         
+##    Detection Prevalence : 0.551         
+##       Balanced Accuracy : 0.710         
 ##                                         
 ##        &#39;Positive&#39; Class : tail          
 ## </code></pre>
-<p>Uh oh. With an accuracy of 0.7238 this is by far the worst model we have built! I guess it’s clear we should use the big tree from model 1 as our final model, right? Oh wait, we split the data into training and validation set! Since the models are all built on the training set they have no ideas what the validation set looks like. If we feed the models the validation set we can make actual predictions with them and get a sense on its predictive accuracy. How exciting! Let’s do it.</p>
+<p>Uh oh. With an accuracy of 0.7105 this is by far the worst model we have built! I guess it’s clear we should use the big tree from model 1 as our final model, right? Oh wait, we split the data into training and validation set! Since the models are all built on the training set they have no ideas what the validation set looks like. If we feed the models the validation set we can make actual predictions with them and get a sense on its predictive accuracy. How exciting! Let’s do it.</p>
 </div>
 <div id="performance-evaluation-validation" class="section level2">
 <h2>Performance Evaluation (Validation)</h2>
@@ -294,15 +295,15 @@ kable(df)</code></pre>
 <tbody>
 <tr class="odd">
 <td align="left">Model 1</td>
-<td align="right">0.6065</td>
+<td align="right">0.6466</td>
 </tr>
 <tr class="even">
 <td align="left">Model 2</td>
-<td align="right">0.6692</td>
+<td align="right">0.6591</td>
 </tr>
 <tr class="odd">
 <td align="left">Model 3</td>
-<td align="right">0.6792</td>
+<td align="right">0.6817</td>
 </tr>
 </tbody>
 </table>
@@ -337,6 +338,9 @@ kable(df)</code></pre>
 	<div class="post-nav__item post-nav__item--prev col-1-2">
 		<a class="post-nav__link" href="https://fengkehh.github.io/post/2017-04-26-the-poor-pigs-problem/" rel="prev"><span class="post-nav__caption">«Previous</span><p class="post-nav__post-title">The Poor Pigs Problem</p></a>
 	</div>
+	<div class="post-nav__item post-nav__item--next col-1-2">
+		<a class="post-nav__link" href="https://fengkehh.github.io/post/introduction-to-cross-validation/" rel="next"><span class="post-nav__caption">Next»</span><p class="post-nav__post-title">Introduction to Cross Validation</p></a>
+	</div>
 </nav>
 
 	
@@ -367,6 +371,7 @@ kable(df)</code></pre>
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="../../post/introduction-to-cross-validation/">Introduction to Cross Validation</a></li>
 			<li class="widget__item"><a class="widget__link" href="../../post/2017-06-30-overfitting/">A Demonstration of Overfitting</a></li>
 			<li class="widget__item"><a class="widget__link" href="../../post/2017-04-26-the-poor-pigs-problem/">The Poor Pigs Problem</a></li>
 			<li class="widget__item"><a class="widget__link" href="../../post/2017-03-30-can-car-transmission-affect-fuel-efficiency/">Can Car Transmission Affect Fuel Efficiency?</a></li>
@@ -387,9 +392,11 @@ kable(df)</code></pre>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/beginner" title="beginner">beginner</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/blogdown" title="blogdown">blogdown</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/bootstrap" title="bootstrap">bootstrap</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/cross-validation" title="cross-validation">cross-validation</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/github" title="github">github</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hugo" title="hugo">hugo</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/hypothesis-test" title="hypothesis-test">hypothesis-test</a>
+		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/intermediate" title="intermediate">intermediate</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/machine-learning" title="machine-learning">machine-learning</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/model-selection" title="model-selection">model-selection</a>
 		<a class="widget__link widget__link--taglist" href="https://fengkehh.github.io/tags/multivariate-linear-regression" title="multivariate-linear-regression">multivariate-linear-regression</a>

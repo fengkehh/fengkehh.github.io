@@ -7,6 +7,11 @@
   </url>
   
   <url>
+    <loc>https://fengkehh.github.io/post/introduction-to-cross-validation/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://fengkehh.github.io/post/2017-06-30-overfitting/</loc>
     <lastmod>2017-06-30T00:00:00+00:00</lastmod>
   </url>
@@ -78,6 +83,12 @@
   </url>
   
   <url>
+    <loc>https://fengkehh.github.io/tags/cross-validation/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://fengkehh.github.io/tags/github/</loc>
     <lastmod>2017-03-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -96,8 +107,14 @@
   </url>
   
   <url>
+    <loc>https://fengkehh.github.io/tags/intermediate/</loc>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://fengkehh.github.io/tags/machine-learning/</loc>
-    <lastmod>2017-06-30T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -127,7 +144,7 @@
   
   <url>
     <loc>https://fengkehh.github.io/post/</loc>
-    <lastmod>2017-06-30T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -145,7 +162,7 @@
   
   <url>
     <loc>https://fengkehh.github.io/tags/r/</loc>
-    <lastmod>2017-06-30T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -174,7 +191,7 @@
   
   <url>
     <loc>https://fengkehh.github.io/tags/tree/</loc>
-    <lastmod>2017-06-30T00:00:00+00:00</lastmod>
+    <lastmod>2017-07-03T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
