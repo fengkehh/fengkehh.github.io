@@ -21,10 +21,6 @@
 &lt;li&gt;&lt;a href=&#34;#application-example&#34;&gt;Application Example&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
-&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;library(&amp;#39;knitr&amp;#39;)
-
-opts_chunk$set(echo = TRUE, warning=FALSE, message = FALSE, tidy = TRUE)
-options(digits = 4)&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;This is a continuation of my article on &lt;a href=&#34;https://fengkehh.github.io/post/2017-06-30-overfitting/&#34;&gt;overfitting&lt;/a&gt;. If you haven’t read it, I recommend you to start there first.&lt;/p&gt;
 &lt;p&gt;As I mentioned, the biggest problem overfitting presents to a modeler is it causes us to think the model performance is better than it actually is. In this post I am going to introduce you to a resampling method that can produce accurate model performance estimation - &lt;strong&gt;cross validation&lt;/strong&gt;.&lt;/p&gt;
 &lt;div id=&#34;basic-idea-keep-some-data-out-of-reach&#34; class=&#34;section level1&#34;&gt;
